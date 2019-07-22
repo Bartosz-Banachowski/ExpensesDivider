@@ -49,26 +49,40 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		274D7B5522E5A55B00AAB5DD /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				27B9C31722E0F0F9007AF8B6 /* AppDelegate.swift */,
+				27B9C32322E0F0FC007AF8B6 /* Info.plist */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		274D7B5622E5A56600AAB5DD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				27B9C31E22E0F0FC007AF8B6 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		274D7B5722E5A5A200AAB5DD /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				27B9C31B22E0F0F9007AF8B6 /* Main.storyboard */,
+				27B9C32022E0F0FC007AF8B6 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		27931BA122E0F3F800975E5C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				27931BA522E0F48700975E5C /* Controller */,
 				27931BA422E0F48300975E5C /* View */,
 				27931BA322E0F47A00975E5C /* Model */,
-				27B9C31722E0F0F9007AF8B6 /* AppDelegate.swift */,
 			);
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		27931BA222E0F40500975E5C /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				27B9C31B22E0F0F9007AF8B6 /* Main.storyboard */,
-				27B9C31E22E0F0FC007AF8B6 /* Assets.xcassets */,
-				27B9C32022E0F0FC007AF8B6 /* LaunchScreen.storyboard */,
-				27B9C32322E0F0FC007AF8B6 /* Info.plist */,
-			);
-			path = Assets;
 			sourceTree = "<group>";
 		};
 		27931BA322E0F47A00975E5C /* Model */ = {
@@ -114,7 +128,9 @@
 		27B9C31622E0F0F9007AF8B6 /* ExpensesDivider */ = {
 			isa = PBXGroup;
 			children = (
-				27931BA222E0F40500975E5C /* Assets */,
+				274D7B5722E5A5A200AAB5DD /* Storyboards */,
+				274D7B5622E5A56600AAB5DD /* Resources */,
+				274D7B5522E5A55B00AAB5DD /* Application */,
 				27931BA122E0F3F800975E5C /* Sources */,
 			);
 			path = ExpensesDivider;
@@ -375,7 +391,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CXL2NHJDW2;
-				INFOPLIST_FILE = ExpensesDivider/Assets/Info.plist;
+				INFOPLIST_FILE = ExpensesDivider/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -394,7 +410,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CXL2NHJDW2;
-				INFOPLIST_FILE = ExpensesDivider/Assets/Info.plist;
+				INFOPLIST_FILE = ExpensesDivider/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
