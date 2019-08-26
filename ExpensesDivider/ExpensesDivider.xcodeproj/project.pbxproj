@@ -7,21 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		273FA2072314197B00AE1F3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 273FA2062314197B00AE1F3B /* Assets.xcassets */; };
 		2780981CE4C9643B3F683472 /* Pods_ExpensesDivider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79ED922E40549FB3EE8E9C01 /* Pods_ExpensesDivider.framework */; };
 		27B9C31822E0F0F9007AF8B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B9C31722E0F0F9007AF8B6 /* AppDelegate.swift */; };
-		27B9C31A22E0F0F9007AF8B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B9C31922E0F0F9007AF8B6 /* ViewController.swift */; };
-		27B9C31D22E0F0F9007AF8B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27B9C31B22E0F0F9007AF8B6 /* Main.storyboard */; };
-		27B9C31F22E0F0FC007AF8B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27B9C31E22E0F0FC007AF8B6 /* Assets.xcassets */; };
+		27B9C31A22E0F0F9007AF8B6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B9C31922E0F0F9007AF8B6 /* LoginViewController.swift */; };
+		27B9C31D22E0F0F9007AF8B6 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27B9C31B22E0F0F9007AF8B6 /* Login.storyboard */; };
 		27B9C32222E0F0FC007AF8B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27B9C32022E0F0FC007AF8B6 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		27931BA822E0F61400975E5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		273FA2062314197B00AE1F3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		27931BA822E0F61400975E5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		27931BA922E0F61400975E5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27B9C31422E0F0F9007AF8B6 /* ExpensesDivider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpensesDivider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27B9C31722E0F0F9007AF8B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		27B9C31922E0F0F9007AF8B6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		27B9C31E22E0F0FC007AF8B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		27B9C31922E0F0F9007AF8B6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		27B9C32322E0F0FC007AF8B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33DA772826255CE1EA741233 /* Pods-ExpensesDivider.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpensesDivider.release.xcconfig"; path = "Target Support Files/Pods-ExpensesDivider/Pods-ExpensesDivider.release.xcconfig"; sourceTree = "<group>"; };
 		79ED922E40549FB3EE8E9C01 /* Pods_ExpensesDivider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpensesDivider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,7 +61,7 @@
 		274D7B5622E5A56600AAB5DD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				27B9C31E22E0F0FC007AF8B6 /* Assets.xcassets */,
+				273FA2062314197B00AE1F3B /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -69,7 +69,7 @@
 		274D7B5722E5A5A200AAB5DD /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				27B9C31B22E0F0F9007AF8B6 /* Main.storyboard */,
+				27B9C31B22E0F0F9007AF8B6 /* Login.storyboard */,
 				27B9C32022E0F0FC007AF8B6 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -102,7 +102,7 @@
 		27931BA522E0F48700975E5C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				27B9C31922E0F0F9007AF8B6 /* ViewController.swift */,
+				27B9C31922E0F0F9007AF8B6 /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -204,8 +204,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				27B9C32222E0F0FC007AF8B6 /* LaunchScreen.storyboard in Resources */,
-				27B9C31F22E0F0FC007AF8B6 /* Assets.xcassets in Resources */,
-				27B9C31D22E0F0F9007AF8B6 /* Main.storyboard in Resources */,
+				273FA2072314197B00AE1F3B /* Assets.xcassets in Resources */,
+				27B9C31D22E0F0F9007AF8B6 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,7 +241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27B9C31A22E0F0F9007AF8B6 /* ViewController.swift in Sources */,
+				27B9C31A22E0F0F9007AF8B6 /* LoginViewController.swift in Sources */,
 				27B9C31822E0F0F9007AF8B6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,12 +249,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		27B9C31B22E0F0F9007AF8B6 /* Main.storyboard */ = {
+		27B9C31B22E0F0F9007AF8B6 /* Login.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				27931BA822E0F61400975E5C /* Base */,
 			);
-			name = Main.storyboard;
+			name = Login.storyboard;
 			sourceTree = "<group>";
 		};
 		27B9C32022E0F0FC007AF8B6 /* LaunchScreen.storyboard */ = {
@@ -399,7 +399,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bartoszbanachowski.ExpensesDivider;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -418,7 +418,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bartoszbanachowski.ExpensesDivider;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
