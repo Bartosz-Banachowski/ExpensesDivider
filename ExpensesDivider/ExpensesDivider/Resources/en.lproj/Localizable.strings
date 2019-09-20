@@ -7,5 +7,6 @@
 */
 
 "emptyFieldsError" = "Please fill in all fields correctly";
-
-
+"validationPasswordError" = "Password need to have at least 8 characters within letters, numbers and special charackter";
+"validationEmailError" = "Email address is not valid";
+"passwordsAreNotEqualError" = "Passwords are not the same";

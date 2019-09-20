@@ -7,3 +7,6 @@
 */
 
 "emptyFieldsError" = "Proszę wypełnić wszystkie pola poprawnie";
+"validationPasswordError" = "Hasło musi zawierać conajmniej 8 znaków w tym co najmniej litere, liczbe i znak specjalny";
+"validationEmailError" = "Adres email jest nieprawidłowy";
+"passwordsAreNotEqualError" = "Hasła nie są takie same";

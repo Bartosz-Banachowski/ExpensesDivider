@@ -17,24 +17,10 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    func validateField() -> String? {
-
-        //check all field are full in
-        if loginTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-
-            return NSLocalizedString("emptyFieldsError", comment: "Empty fields error")
-        }
-
-        return nil
+        self.hideKeyboardWhenTappedAround()
     }
 
     @IBAction func loginTapped(_ sender: UIButton) {
-        errorLabel.alpha = 1
-        errorLabel.text = validateField()
-
     }
 
     @IBAction func forgotPassword(_ sender: UIButton) {
