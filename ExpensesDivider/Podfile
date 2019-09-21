@@ -6,6 +6,9 @@ target 'ExpensesDivider' do
   use_frameworks!
 
   pod 'Firebase/Auth'
-  pod 'SwiftLint'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
+  pod 'SwiftLint' 
   
 end
