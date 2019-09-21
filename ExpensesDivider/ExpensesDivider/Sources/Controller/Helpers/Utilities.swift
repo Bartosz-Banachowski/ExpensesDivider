@@ -21,4 +21,9 @@ class Utilities {
         let emailFormula = NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")
         return emailFormula.evaluate(with: email)
     }
+
+    static func showError(_ message: String, _ errLabel: UILabel) {
+        errLabel.text = message
+        errLabel.alpha = 1
+    }
 }

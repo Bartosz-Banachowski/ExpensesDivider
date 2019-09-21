@@ -53,19 +53,23 @@ class SignUpViewController: UIViewController {
         let error = validateField()
 
         if let message = error {
-            showError(message)
+            Utilities.showError(message, errorLabel)
         } else {
-            Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (result, error) in
+            let username = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+            let login = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+            let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+
+            Auth.auth().createUser(withEmail: login!, password: password!) { (result, error) in
                 if let error = error {
-                    self.showError(NSLocalizedString("userCreationError", comment: "Error during creating user"))
+                    Utilities.showError(NSLocalizedString("userCreationError", comment: "Error during creating user"), self.errorLabel)
                     NSLog("User creation error: \(error.localizedDescription)")
                 } else {
                     let database = Firestore.firestore()
 
-                    database.collection("users").addDocument(data: ["username": self.usernameTextField.text!, "uid": result!.user.uid],
+                    database.collection("users").addDocument(data: ["username": username!, "uid": result!.user.uid],
                                                              completion: { (error) in
                         if error != nil {
-                            self.showError(NSLocalizedString("userSavingDataError", comment: "Error during saving user data"))
+                            Utilities.showError(NSLocalizedString("userSavingDataError", comment: "Error during saving user data"), self.errorLabel)
                             NSLog("User saving data error \(error.debugDescription)")
                         }
 
@@ -76,16 +80,11 @@ class SignUpViewController: UIViewController {
         }
     }
 
-    func showError(_ message: String) {
-        errorLabel.text = message
-        errorLabel.alpha = 1
-    }
-
     func goToHome() {
         let homeStoryboard = UIStoryboard(name: Constants.Storyboard.homeStoryboard, bundle: Bundle.main)
-        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController) as? HomeViewController
+        let homeVC = homeStoryboard.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController) as? HomeViewController
 
-        view.window?.rootViewController = homeViewController
+        view.window?.rootViewController = homeVC
         view.window?.makeKeyAndVisible()
     }
 }

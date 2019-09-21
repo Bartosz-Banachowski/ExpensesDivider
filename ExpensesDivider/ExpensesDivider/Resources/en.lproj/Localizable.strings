@@ -7,8 +7,9 @@
 */
 
 "emptyFieldsError" = "Please fill in all fields correctly";
-"validationPasswordError" = "Password need to have at least 8 characters within letters, numbers and special charackter";
+"validationPasswordError" = "Password need to have at least 8 characters within letters, numbers and special character";
 "validationEmailError" = "Email address is not valid";
 "passwordsAreNotEqualError" = "Passwords are not the same";
 "userCreationError" = "Error occurred during user creation";
 "userSavingDataError" = "Error occurred during user data saving";
+"userLoginError" = "Error occurred during user login: ";

@@ -12,3 +12,5 @@
 "passwordsAreNotEqualError" = "Hasła nie są takie same";
 "userCreationError" = "Wystąpił błąd podczas tworzenia użytkownika";
 "userSavingDataError" = "Wystąpił błąd podczas zapisywania danych użytkownika";
+"userLoginError" = "Wystąpił błąd podczas logowania użytkownika";
+"
