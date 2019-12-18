@@ -1,15 +1,14 @@
 //
-//  HomeViewController.swift
+//  AddFriendViewController.swift
 //  ExpensesDivider
 //
-//  Created by Banachowski Bartosz on 12/09/2019.
+//  Created by Bartosz Banachowski on 03/12/2019.
 //  Copyright © 2019 Banachowski Bartosz. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-class HomeViewController: UITabBarController {
+class AddFriendViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

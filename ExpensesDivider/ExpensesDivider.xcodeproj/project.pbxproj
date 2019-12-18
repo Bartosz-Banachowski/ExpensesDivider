@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270FF3A5238FBBE900ECA7F1 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270FF3A4238FBBE900ECA7F1 /* FriendListViewController.swift */; };
 		27397B4D23352B3B0092EA9F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27397B4C23352B3B0092EA9F /* Utilities.swift */; };
 		27397B4F233536370092EA9F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27397B4E233536370092EA9F /* Extensions.swift */; };
 		273FA2072314197B00AE1F3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 273FA2062314197B00AE1F3B /* Assets.xcassets */; };
 		2747C3282333CCC600432D39 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2747C32A2333CCC600432D39 /* Localizable.strings */; };
+		2758DE1823A8FF840079333E /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2758DE1723A8FF840079333E /* CustomLabel.swift */; };
 		2780981CE4C9643B3F683472 /* Pods_ExpensesDivider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79ED922E40549FB3EE8E9C01 /* Pods_ExpensesDivider.framework */; };
 		278A1062233377E2002FCABA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278A1061233377E2002FCABA /* SignUpViewController.swift */; };
 		279BD9EF232A4AAF00F1379F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BD9EE232A4AAF00F1379F /* HomeViewController.swift */; };
@@ -19,11 +21,14 @@
 		27B9C31D22E0F0F9007AF8B6 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27B9C31B22E0F0F9007AF8B6 /* Login.storyboard */; };
 		27B9C32222E0F0FC007AF8B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27B9C32022E0F0FC007AF8B6 /* LaunchScreen.storyboard */; };
 		27C1C3402328E9DB0009DA37 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27C1C33F2328E9DB0009DA37 /* GoogleService-Info.plist */; };
+		27C79DB723963B2D00EA6FC4 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C79DB623963B2D00EA6FC4 /* CustomButton.swift */; };
+		27C79DBA23964B2A00EA6FC4 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C79DB923964B2A00EA6FC4 /* AddFriendViewController.swift */; };
 		27E4916E23364CB1002BA052 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E4916D23364CB1002BA052 /* Home.storyboard */; };
 		27E49170233652C5002BA052 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E4916F233652C5002BA052 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		270FF3A4238FBBE900ECA7F1 /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
 		27397B492334EE9B0092EA9F /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Login.strings; sourceTree = "<group>"; };
 		27397B4A2334EE9C0092EA9F /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		27397B4B2334EF030092EA9F /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -31,6 +36,7 @@
 		27397B4E233536370092EA9F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		273FA2062314197B00AE1F3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2747C3292333CCC600432D39 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2758DE1723A8FF840079333E /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		278A1061233377E2002FCABA /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		27931BA822E0F61400975E5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		27931BA922E0F61400975E5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,6 +46,8 @@
 		27B9C31922E0F0F9007AF8B6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		27B9C32322E0F0FC007AF8B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27C1C33F2328E9DB0009DA37 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		27C79DB623963B2D00EA6FC4 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		27C79DB923964B2A00EA6FC4 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		27E4916D23364CB1002BA052 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		27E4916F233652C5002BA052 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		33DA772826255CE1EA741233 /* Pods-ExpensesDivider.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpensesDivider.release.xcconfig"; path = "Target Support Files/Pods-ExpensesDivider/Pods-ExpensesDivider.release.xcconfig"; sourceTree = "<group>"; };
@@ -101,7 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				27931BA522E0F48700975E5C /* Controller */,
-				27931BA422E0F48300975E5C /* View */,
+				27931BA422E0F48300975E5C /* Views */,
 				27931BA322E0F47A00975E5C /* Model */,
 			);
 			path = Sources;
@@ -114,12 +122,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		27931BA422E0F48300975E5C /* View */ = {
+		27931BA422E0F48300975E5C /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				274D7B5722E5A5A200AAB5DD /* Storyboards */,
+				27C79DB623963B2D00EA6FC4 /* CustomButton.swift */,
+				2758DE1723A8FF840079333E /* CustomLabel.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		27931BA522E0F48700975E5C /* Controller */ = {
@@ -129,6 +139,8 @@
 				27B9C31922E0F0F9007AF8B6 /* LoginViewController.swift */,
 				279BD9EE232A4AAF00F1379F /* HomeViewController.swift */,
 				278A1061233377E2002FCABA /* SignUpViewController.swift */,
+				270FF3A4238FBBE900ECA7F1 /* FriendListViewController.swift */,
+				27C79DB923964B2A00EA6FC4 /* AddFriendViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -337,8 +349,12 @@
 			files = (
 				27B9C31A22E0F0F9007AF8B6 /* LoginViewController.swift in Sources */,
 				27397B4F233536370092EA9F /* Extensions.swift in Sources */,
+				2758DE1823A8FF840079333E /* CustomLabel.swift in Sources */,
+				27C79DBA23964B2A00EA6FC4 /* AddFriendViewController.swift in Sources */,
+				27C79DB723963B2D00EA6FC4 /* CustomButton.swift in Sources */,
 				27B9C31822E0F0F9007AF8B6 /* AppDelegate.swift in Sources */,
 				278A1062233377E2002FCABA /* SignUpViewController.swift in Sources */,
+				270FF3A5238FBBE900ECA7F1 /* FriendListViewController.swift in Sources */,
 				27E49170233652C5002BA052 /* Constants.swift in Sources */,
 				27397B4D23352B3B0092EA9F /* Utilities.swift in Sources */,
 				279BD9EF232A4AAF00F1379F /* HomeViewController.swift in Sources */,

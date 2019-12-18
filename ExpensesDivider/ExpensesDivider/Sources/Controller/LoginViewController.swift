@@ -60,11 +60,15 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func forgotPassword(_ sender: UIButton) {
+        //TODO
     }
 
     func goToHome() {
         let homeStoryboard = UIStoryboard(name: Constants.Storyboard.homeStoryboard, bundle: Bundle.main)
-        let homeVC = homeStoryboard.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController) as? HomeViewController
+        guard let homeVC = homeStoryboard.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController) as? HomeViewController else {
+            print("Could not find view controller")
+            return
+        }
 
         view.window?.rootViewController = homeVC
         view.window?.makeKeyAndVisible()
