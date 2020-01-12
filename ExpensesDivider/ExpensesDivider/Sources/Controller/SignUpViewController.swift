@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 import FirebaseAuth
 import Firebase
+import FirebaseFirestoreSwift
 
 class SignUpViewController: UIViewController {
 
@@ -56,25 +57,26 @@ class SignUpViewController: UIViewController {
             Utilities.showError(message, errorLabel)
         } else {
             let username = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-            let login = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+            let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
 
-            Auth.auth().createUser(withEmail: login!, password: password!) { (result, error) in
+            Auth.auth().createUser(withEmail: email!, password: password!) { (result, error) in
                 if let error = error {
                     Utilities.showError(NSLocalizedString("userCreationError", comment: "Error during creating user"), self.errorLabel)
                     NSLog("User creation error: \(error.localizedDescription)")
                 } else {
                     let database = Firestore.firestore()
-
-                    database.collection("users").addDocument(data: ["username": username!, "email": login!, "uid": result!.user.uid],
-                                                             completion: { (error) in
-                        if error != nil {
-                            Utilities.showError(NSLocalizedString("userSavingDataError", comment: "Error during saving user data"), self.errorLabel)
-                            NSLog("User saving data error \(error.debugDescription)")
-                        }
-
-                        self.goToHome()
-                    })
+                    let user = NewUser(username: username!,
+                                          email: email!,
+                                          uid: result!.user.uid)
+                    
+                    do {
+                        try database.collection("users").document(result!.user.uid).setData(from: user)
+                    } catch let error {
+                        Utilities.showError(NSLocalizedString("userSavingDataError", comment: "Error during saving user data"), self.errorLabel)
+                        NSLog("User saving data error \(error)")
+                    }
+                    self.goToHome()
                 }
             }
         }

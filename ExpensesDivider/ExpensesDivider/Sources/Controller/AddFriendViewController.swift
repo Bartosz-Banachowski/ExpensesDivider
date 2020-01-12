@@ -14,24 +14,51 @@ class AddFriendViewController: UIViewController, MFMailComposeViewControllerDele
 
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var errorLabel: UILabel!
+    
 
-    var loggedUsername: User?
+    let database = Firestore.firestore()
+//    let friendsRef: CollectionReference!
+    var loggedUser: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loggedUsername = Auth.auth().currentUser!
+        loggedUser = Auth.auth().currentUser!
+//        friendsRef = database.collection("users").document("loggedUser?.email")
     }
 
     @IBAction func addFriendTapped(_ sender: Any) {
-        sendEmail(emailTextField.text!)
-        dismiss(animated: true)
+        let error = validateField()
 
+        if let message = error {
+            Utilities.showError(message, errorLabel)
+        } else {
+            let username = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+            let login = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+        }
+        
         //pobierz wartosci z text field
             //sprawdz czy ktos o odpowiedniej nazwie uzytkownika i emailu istnieje w bazie danych
             //jesli TAK wyslij zaproszenie do grupy znajomychw aplikacji
             //jesli nie wyslij zaproszenie do sciagniecia aplikacji i stworzenia konta
         //
     }
+    
+    func validateField() -> String? {
+        //check all field are full in
+        if usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            return NSLocalizedString("emptyFieldsError", comment: "Empty fields error")
+        }
+
+        if Utilities.isEmailValid(emailTextField.text!) == false {
+            return NSLocalizedString("validationEmailError", comment: "Email is not valid")
+        }
+        
+        return nil
+    }
+    
 
     func sendEmail(_ recipient: String) {
         if MFMailComposeViewController.canSendMail() {
@@ -39,7 +66,7 @@ class AddFriendViewController: UIViewController, MFMailComposeViewControllerDele
             mail.mailComposeDelegate = self
             mail.setToRecipients([recipient])
             mail.setSubject("Invitation to ExpensesDivider")
-            mail.setMessageBody("<p>Hello! </p> User \(loggedUsername?.email ?? "") has sent you an invitation to his friend list in ExpensesDivider",
+            mail.setMessageBody("<p>Hello! </p> User \(loggedUser?.email ?? "") has sent you an invitation to his friend list in ExpensesDivider",
                 isHTML: true)
             present(mail, animated: true)
         } else {
@@ -48,14 +75,6 @@ class AddFriendViewController: UIViewController, MFMailComposeViewControllerDele
     }
 
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        
-        print("RTSTSTSFS")
-
-        if let _ = error {
-            controller.dismiss(animated: true)
-        }
-        
-        print("RTSTSTSFS")
         controller.dismiss(animated: true)
     }
 }

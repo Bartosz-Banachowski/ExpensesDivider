@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		270FF3A5238FBBE900ECA7F1 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270FF3A4238FBBE900ECA7F1 /* FriendListViewController.swift */; };
+		27255AA823CB9D8900EFDAE3 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27255AA723CB9D8900EFDAE3 /* Friend.swift */; };
+		27255AAA23CB9FC300EFDAE3 /* newUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27255AA923CB9FC300EFDAE3 /* newUser.swift */; };
 		27397B4D23352B3B0092EA9F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27397B4C23352B3B0092EA9F /* Utilities.swift */; };
 		27397B4F233536370092EA9F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27397B4E233536370092EA9F /* Extensions.swift */; };
 		273FA2072314197B00AE1F3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 273FA2062314197B00AE1F3B /* Assets.xcassets */; };
@@ -30,6 +32,8 @@
 
 /* Begin PBXFileReference section */
 		270FF3A4238FBBE900ECA7F1 /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
+		27255AA723CB9D8900EFDAE3 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		27255AA923CB9FC300EFDAE3 /* newUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newUser.swift; sourceTree = "<group>"; };
 		27397B492334EE9B0092EA9F /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Login.strings; sourceTree = "<group>"; };
 		27397B4A2334EE9C0092EA9F /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		27397B4B2334EF030092EA9F /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -120,6 +124,8 @@
 		27931BA322E0F47A00975E5C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				27255AA723CB9D8900EFDAE3 /* Friend.swift */,
+				27255AA923CB9FC300EFDAE3 /* newUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -313,30 +319,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ExpensesDivider/Pods-ExpensesDivider-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-ExpensesDivider/Pods-ExpensesDivider-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-ExpensesDivider/Pods-ExpensesDivider-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -357,10 +344,12 @@
 				27C79DB723963B2D00EA6FC4 /* CustomButton.swift in Sources */,
 				27B9C31822E0F0F9007AF8B6 /* AppDelegate.swift in Sources */,
 				278A1062233377E2002FCABA /* SignUpViewController.swift in Sources */,
+				27255AAA23CB9FC300EFDAE3 /* newUser.swift in Sources */,
 				270FF3A5238FBBE900ECA7F1 /* FriendListViewController.swift in Sources */,
 				27E49170233652C5002BA052 /* Constants.swift in Sources */,
 				27397B4D23352B3B0092EA9F /* Utilities.swift in Sources */,
 				279BD9EF232A4AAF00F1379F /* HomeViewController.swift in Sources */,
+				27255AA823CB9D8900EFDAE3 /* Friend.swift in Sources */,
 				274C801C23CADA0F00343ED2 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

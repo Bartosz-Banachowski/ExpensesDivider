@@ -1,2 +1,7 @@
 line_length: 150
 
+included:
+- ExpensesDivider
+
+excluded:
+- Pods
