@@ -34,8 +34,4 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.textLabel?.text = friendList[indexPath.row]
         return cell
     }
-    
-//    @IBAction func addFriendTapped(_ sender: Any) {
-//        performSegue(withIdentifier: Constants.Storyboard.AddFriendViewController, sender: self)
-//    }
 }

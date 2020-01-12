@@ -12,6 +12,7 @@
 		27397B4F233536370092EA9F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27397B4E233536370092EA9F /* Extensions.swift */; };
 		273FA2072314197B00AE1F3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 273FA2062314197B00AE1F3B /* Assets.xcassets */; };
 		2747C3282333CCC600432D39 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2747C32A2333CCC600432D39 /* Localizable.strings */; };
+		274C801C23CADA0F00343ED2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274C801B23CADA0F00343ED2 /* SettingsViewController.swift */; };
 		2758DE1823A8FF840079333E /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2758DE1723A8FF840079333E /* CustomLabel.swift */; };
 		2780981CE4C9643B3F683472 /* Pods_ExpensesDivider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79ED922E40549FB3EE8E9C01 /* Pods_ExpensesDivider.framework */; };
 		278A1062233377E2002FCABA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278A1061233377E2002FCABA /* SignUpViewController.swift */; };
@@ -36,6 +37,7 @@
 		27397B4E233536370092EA9F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		273FA2062314197B00AE1F3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2747C3292333CCC600432D39 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		274C801B23CADA0F00343ED2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2758DE1723A8FF840079333E /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		278A1061233377E2002FCABA /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		27931BA822E0F61400975E5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				278A1061233377E2002FCABA /* SignUpViewController.swift */,
 				270FF3A4238FBBE900ECA7F1 /* FriendListViewController.swift */,
 				27C79DB923964B2A00EA6FC4 /* AddFriendViewController.swift */,
+				274C801B23CADA0F00343ED2 /* SettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				27E49170233652C5002BA052 /* Constants.swift in Sources */,
 				27397B4D23352B3B0092EA9F /* Utilities.swift in Sources */,
 				279BD9EF232A4AAF00F1379F /* HomeViewController.swift in Sources */,
+				274C801C23CADA0F00343ED2 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

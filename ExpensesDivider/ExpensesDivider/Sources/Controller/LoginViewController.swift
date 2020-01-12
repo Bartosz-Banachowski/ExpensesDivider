@@ -39,24 +39,27 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginTapped(_ sender: UIButton) {
-        let error = validateField()
-
-        if let message = error {
-            Utilities.showError(message, errorLabel)
-        } else {
-            let login = loginTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-            let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-
-            Auth.auth().signIn(withEmail: login!, password: password!) { (_, error) in
-                if let error = error {
-                    Utilities.showError(NSLocalizedString("userLoginError", comment: "Error during log in user") + error.localizedDescription,
-                                        self.errorLabel)
-                    NSLog("User login error: \(error.localizedDescription)")
-                } else {
-                    self.goToHome()
-                }
-            }
-        }
+        Auth.auth().signIn(withEmail: "lolek@wp.pl", password: "zaq1@WSX")
+        self.goToHome()
+//        let error = validateField()
+//
+//        if let message = error {
+//            Utilities.showError(message, errorLabel)
+//        } else {
+//            let login = loginTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+//            let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+//
+//            Auth.auth().signIn(withEmail: login!, password: password!) { (_, error) in
+//                if let error = error {
+//                    Utilities.showError(NSLocalizedString("userLoginError", comment: "Error during log in user") + error.localizedDescription,
+//                                        self.errorLabel)
+//                    NSLog("User login error: \(error.localizedDescription)")
+//                } else {
+//                    NSLog("Login succesful")
+//                    self.goToHome()
+//                }
+//            }
+//        }
     }
 
     @IBAction func forgotPassword(_ sender: UIButton) {
@@ -65,10 +68,11 @@ class LoginViewController: UIViewController {
 
     func goToHome() {
         let homeStoryboard = UIStoryboard(name: Constants.Storyboard.homeStoryboard, bundle: Bundle.main)
-        guard let homeVC = homeStoryboard.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController) as? HomeViewController else {
-            print("Could not find view controller")
-            return
-        }
+        guard let homeVC = homeStoryboard.instantiateViewController(withIdentifier: Constants.Storyboard.homeVC) as? HomeViewController
+            else {
+                print("Could not find home view controller")
+                return
+            }
 
         view.window?.rootViewController = homeVC
         view.window?.makeKeyAndVisible()

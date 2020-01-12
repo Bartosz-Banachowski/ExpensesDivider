@@ -66,7 +66,7 @@ class SignUpViewController: UIViewController {
                 } else {
                     let database = Firestore.firestore()
 
-                    database.collection("users").addDocument(data: ["username": username!, "uid": result!.user.uid],
+                    database.collection("users").addDocument(data: ["username": username!, "email": login!, "uid": result!.user.uid],
                                                              completion: { (error) in
                         if error != nil {
                             Utilities.showError(NSLocalizedString("userSavingDataError", comment: "Error during saving user data"), self.errorLabel)
@@ -82,7 +82,7 @@ class SignUpViewController: UIViewController {
 
     func goToHome() {
         let homeStoryboard = UIStoryboard(name: Constants.Storyboard.homeStoryboard, bundle: Bundle.main)
-        let homeVC = homeStoryboard.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController) as? HomeViewController
+        let homeVC = homeStoryboard.instantiateViewController(withIdentifier: Constants.Storyboard.homeVC) as? HomeViewController
 
         view.window?.rootViewController = homeVC
         view.window?.makeKeyAndVisible()

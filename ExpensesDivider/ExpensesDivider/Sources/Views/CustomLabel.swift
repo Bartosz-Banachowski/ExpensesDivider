@@ -15,14 +15,14 @@ class CustomLabel: UILabel {
             layer.cornerRadius = cornerRadius
         }
     }
-    
+
     @IBInspectable var borderWidth: CGFloat = 0 {
         didSet {
             layer.borderWidth = borderWidth
             layer.borderColor = UIColor.green.cgColor
         }
     }
-    
+
     @IBInspectable var borderColor: UIColor? {
         didSet {
             layer.borderColor = borderColor?.cgColor
