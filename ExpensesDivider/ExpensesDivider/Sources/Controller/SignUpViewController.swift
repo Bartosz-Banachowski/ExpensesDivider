@@ -69,7 +69,7 @@ class SignUpViewController: UIViewController {
                     let user = NewUser(username: username!,
                                           email: email!,
                                           uid: result!.user.uid)
-                    
+
                     do {
                         try database.collection("users").document(result!.user.uid).setData(from: user)
                     } catch let error {

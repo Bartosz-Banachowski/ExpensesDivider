@@ -3,13 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		270FF3A5238FBBE900ECA7F1 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270FF3A4238FBBE900ECA7F1 /* FriendListViewController.swift */; };
 		27255AA823CB9D8900EFDAE3 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27255AA723CB9D8900EFDAE3 /* Friend.swift */; };
-		27255AAA23CB9FC300EFDAE3 /* newUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27255AA923CB9FC300EFDAE3 /* newUser.swift */; };
+		27255AAA23CB9FC300EFDAE3 /* NewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27255AA923CB9FC300EFDAE3 /* NewUser.swift */; };
 		27397B4D23352B3B0092EA9F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27397B4C23352B3B0092EA9F /* Utilities.swift */; };
 		27397B4F233536370092EA9F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27397B4E233536370092EA9F /* Extensions.swift */; };
 		273FA2072314197B00AE1F3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 273FA2062314197B00AE1F3B /* Assets.xcassets */; };
@@ -18,6 +18,7 @@
 		2758DE1823A8FF840079333E /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2758DE1723A8FF840079333E /* CustomLabel.swift */; };
 		2780981CE4C9643B3F683472 /* Pods_ExpensesDivider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79ED922E40549FB3EE8E9C01 /* Pods_ExpensesDivider.framework */; };
 		278A1062233377E2002FCABA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278A1061233377E2002FCABA /* SignUpViewController.swift */; };
+		2792D66723CD80BD003FAD3B /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2792D66623CD80BD003FAD3B /* FriendCell.swift */; };
 		279BD9EF232A4AAF00F1379F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BD9EE232A4AAF00F1379F /* HomeViewController.swift */; };
 		27B9C31822E0F0F9007AF8B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B9C31722E0F0F9007AF8B6 /* AppDelegate.swift */; };
 		27B9C31A22E0F0F9007AF8B6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B9C31922E0F0F9007AF8B6 /* LoginViewController.swift */; };
@@ -33,7 +34,7 @@
 /* Begin PBXFileReference section */
 		270FF3A4238FBBE900ECA7F1 /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
 		27255AA723CB9D8900EFDAE3 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
-		27255AA923CB9FC300EFDAE3 /* newUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newUser.swift; sourceTree = "<group>"; };
+		27255AA923CB9FC300EFDAE3 /* NewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUser.swift; sourceTree = "<group>"; };
 		27397B492334EE9B0092EA9F /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Login.strings; sourceTree = "<group>"; };
 		27397B4A2334EE9C0092EA9F /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		27397B4B2334EF030092EA9F /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -44,6 +45,7 @@
 		274C801B23CADA0F00343ED2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2758DE1723A8FF840079333E /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		278A1061233377E2002FCABA /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		2792D66623CD80BD003FAD3B /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		27931BA822E0F61400975E5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		27931BA922E0F61400975E5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		279BD9EE232A4AAF00F1379F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -125,7 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				27255AA723CB9D8900EFDAE3 /* Friend.swift */,
-				27255AA923CB9FC300EFDAE3 /* newUser.swift */,
+				27255AA923CB9FC300EFDAE3 /* NewUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -136,6 +138,7 @@
 				274D7B5722E5A5A200AAB5DD /* Storyboards */,
 				27C79DB623963B2D00EA6FC4 /* CustomButton.swift */,
 				2758DE1723A8FF840079333E /* CustomLabel.swift */,
+				2792D66623CD80BD003FAD3B /* FriendCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -341,10 +344,11 @@
 				27397B4F233536370092EA9F /* Extensions.swift in Sources */,
 				2758DE1823A8FF840079333E /* CustomLabel.swift in Sources */,
 				27C79DBA23964B2A00EA6FC4 /* AddFriendViewController.swift in Sources */,
+				2792D66723CD80BD003FAD3B /* FriendCell.swift in Sources */,
 				27C79DB723963B2D00EA6FC4 /* CustomButton.swift in Sources */,
 				27B9C31822E0F0F9007AF8B6 /* AppDelegate.swift in Sources */,
 				278A1062233377E2002FCABA /* SignUpViewController.swift in Sources */,
-				27255AAA23CB9FC300EFDAE3 /* newUser.swift in Sources */,
+				27255AAA23CB9FC300EFDAE3 /* NewUser.swift in Sources */,
 				270FF3A5238FBBE900ECA7F1 /* FriendListViewController.swift in Sources */,
 				27E49170233652C5002BA052 /* Constants.swift in Sources */,
 				27397B4D23352B3B0092EA9F /* Utilities.swift in Sources */,

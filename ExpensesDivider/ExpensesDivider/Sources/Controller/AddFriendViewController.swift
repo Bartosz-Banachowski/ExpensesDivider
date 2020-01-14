@@ -15,16 +15,14 @@ class AddFriendViewController: UIViewController, MFMailComposeViewControllerDele
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
-    
 
     let database = Firestore.firestore()
-//    let friendsRef: CollectionReference!
+    var friendsRef: CollectionReference!
     var loggedUser: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loggedUser = Auth.auth().currentUser!
-//        friendsRef = database.collection("users").document("loggedUser?.email")
+        friendsRef = Firestore.firestore().collection("users").document(Auth.auth().currentUser!.uid).collection("friends")
     }
 
     @IBAction func addFriendTapped(_ sender: Any) {
@@ -34,17 +32,19 @@ class AddFriendViewController: UIViewController, MFMailComposeViewControllerDele
             Utilities.showError(message, errorLabel)
         } else {
             let username = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-            let login = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-            
+            let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+            let newFriend = Friend(username: username!, email: email!)
+
+            do {
+                try friendsRef.document(newFriend!.email).setData(from: newFriend)
+            } catch let error {
+                Utilities.showError(NSLocalizedString("userSavingDataError", comment: "Error during saving new friend data"), self.errorLabel)
+                NSLog("New friend saving data error \(error)")
+            }
+            self.navigationController?.popViewController(animated: true)
         }
-        
-        //pobierz wartosci z text field
-            //sprawdz czy ktos o odpowiedniej nazwie uzytkownika i emailu istnieje w bazie danych
-            //jesli TAK wyslij zaproszenie do grupy znajomychw aplikacji
-            //jesli nie wyslij zaproszenie do sciagniecia aplikacji i stworzenia konta
-        //
     }
-    
+
     func validateField() -> String? {
         //check all field are full in
         if usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
@@ -55,10 +55,8 @@ class AddFriendViewController: UIViewController, MFMailComposeViewControllerDele
         if Utilities.isEmailValid(emailTextField.text!) == false {
             return NSLocalizedString("validationEmailError", comment: "Email is not valid")
         }
-        
         return nil
     }
-    
 
     func sendEmail(_ recipient: String) {
         if MFMailComposeViewController.canSendMail() {

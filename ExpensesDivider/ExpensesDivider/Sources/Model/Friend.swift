@@ -11,9 +11,19 @@ import Foundation
 public struct Friend: Codable {
     let username: String
     let email: String
-    
-    enum CodingKeys: String, CodingKey {
-        case username
-        case email
+
+    init?(data: [String: Any]) {
+       guard let username = data["username"] as? String,
+           let email = data["email"] as? String else {
+               return nil
+       }
+
+        self.username = username
+        self.email = email
+    }
+
+    init?(username: String, email: String) {
+        self.username = username
+        self.email = email
     }
 }

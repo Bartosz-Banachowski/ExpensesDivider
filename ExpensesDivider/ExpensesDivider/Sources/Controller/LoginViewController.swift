@@ -31,35 +31,31 @@ class LoginViewController: UIViewController {
             return NSLocalizedString("validationEmailError", comment: "Email is not valid")
         }
 
-        if Utilities.isPasswordValid(passwordTextField.text!) == false {
-            return NSLocalizedString("validationPasswordError", comment: "Password is not valid" )
-        }
-
         return nil
     }
 
     @IBAction func loginTapped(_ sender: UIButton) {
-        Auth.auth().signIn(withEmail: "lolek@wp.pl", password: "zaq1@WSX")
-        self.goToHome()
-//        let error = validateField()
-//
-//        if let message = error {
-//            Utilities.showError(message, errorLabel)
-//        } else {
-//            let login = loginTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-//            let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-//
-//            Auth.auth().signIn(withEmail: login!, password: password!) { (_, error) in
-//                if let error = error {
-//                    Utilities.showError(NSLocalizedString("userLoginError", comment: "Error during log in user") + error.localizedDescription,
-//                                        self.errorLabel)
-//                    NSLog("User login error: \(error.localizedDescription)")
-//                } else {
-//                    NSLog("Login succesful")
-//                    self.goToHome()
-//                }
-//            }
-//        }
+//        Auth.auth().signIn(withEmail: "lol@wp.pl", password: "zaq1@WSX")
+//        self.goToHome()
+        let error = validateField()
+
+        if let message = error {
+            Utilities.showError(message, errorLabel)
+        } else {
+            let login = loginTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+            let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+
+            Auth.auth().signIn(withEmail: login!, password: password!) { (_, error) in
+                if let error = error {
+                    Utilities.showError(NSLocalizedString("userLoginError", comment: "Error during log in user") + error.localizedDescription,
+                                        self.errorLabel)
+                    NSLog("User login error: \(error.localizedDescription)")
+                } else {
+                    NSLog("Login succesful")
+                    self.goToHome()
+                }
+            }
+        }
     }
 
     @IBAction func forgotPassword(_ sender: UIButton) {
