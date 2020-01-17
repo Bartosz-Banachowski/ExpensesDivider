@@ -27,3 +27,10 @@ public struct Friend: Codable {
         self.email = email
     }
 }
+
+extension Friend: Equatable {
+    public static func == (lhs: Friend, rhs: Friend) -> Bool {
+        return lhs.username == rhs.username && lhs.email == rhs.email
+    }
+    
+}

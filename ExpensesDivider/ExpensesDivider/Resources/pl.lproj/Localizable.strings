@@ -13,4 +13,5 @@
 "userCreationError" = "Wystąpił błąd podczas tworzenia użytkownika";
 "userSavingDataError" = "Wystąpił błąd podczas zapisywania danych użytkownika";
 "userLoginError" = "Wystąpił błąd podczas logowania użytkownika";
-"
+"groupSavingDataError" = "Wystąpił błąd podczas zapisywania danych grupy";
+"sameNameofGroups" = "Nie może być dwóch grup z tymi samymi nazwami";

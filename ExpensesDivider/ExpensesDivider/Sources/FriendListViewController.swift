@@ -40,7 +40,7 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
         NSLog("Succesfuly delete friend from the list - \(documentID)")
     }
 
-   // MARK: = Listeners
+   // MARK: - Listeners
     func startListeningForFriends() {
         friendListener = friendsRef.addSnapshotListener { (querySnapshot, error) in
             if let error = error {

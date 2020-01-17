@@ -13,3 +13,5 @@
 "userCreationError" = "Error occurred during user creation";
 "userSavingDataError" = "Error occurred during user data saving";
 "userLoginError" = "Error occurred during user login: ";
+"groupSavingDataError" = "Error occurred during group data saving";
+"sameNameofGroups" = "There cannot be two groups with the same name";
