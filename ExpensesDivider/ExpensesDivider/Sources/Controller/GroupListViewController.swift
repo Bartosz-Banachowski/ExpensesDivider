@@ -32,6 +32,15 @@ class GroupListViewController: UIViewController, UITableViewDelegate, UITableVie
         stopListeningForGroup()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is GroupViewController {
+            let groupVC = segue.destination as? GroupViewController
+            if let index = self.groupListTableView.indexPathForSelectedRow {
+                groupVC?.groupName = groupsList[index.row].groupName
+            }
+        }
+    }
+
     func startListeningForGroup() {
         groupListener = groupsRef.addSnapshotListener { (querySnapshot, error) in
             if let error = error {

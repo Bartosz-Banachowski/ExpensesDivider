@@ -15,3 +15,4 @@
 "userLoginError" = "Wystąpił błąd podczas logowania użytkownika";
 "groupSavingDataError" = "Wystąpił błąd podczas zapisywania danych grupy";
 "sameNameofGroups" = "Nie może być dwóch grup z tymi samymi nazwami";
+"billSavingDataError" = "Wystąpił błąd podczas zapisywania danych rachunku";

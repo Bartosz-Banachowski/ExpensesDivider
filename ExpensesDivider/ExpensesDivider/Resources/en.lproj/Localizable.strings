@@ -15,3 +15,4 @@
 "userLoginError" = "Error occurred during user login: ";
 "groupSavingDataError" = "Error occurred during group data saving";
 "sameNameofGroups" = "There cannot be two groups with the same name";
+"billSavingDataError" = "Error occurred during the bill data saving";

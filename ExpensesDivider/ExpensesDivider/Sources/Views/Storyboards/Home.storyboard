@@ -448,7 +448,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HRg-uf-vkv" customClass="CustomButton" customModule="ExpensesDivider" customModuleProvider="target">
-                                <rect key="frame" x="20" y="119" width="160" height="130"/>
+                                <rect key="frame" x="30" y="119" width="160" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.29411764709999999" green="0.5568627451" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
@@ -465,7 +465,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5K8-6U-CaJ" customClass="CustomButton" customModule="ExpensesDivider" customModuleProvider="target">
-                                <rect key="frame" x="234" y="119" width="160" height="130"/>
+                                <rect key="frame" x="224" y="119" width="160" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.29411764709999999" green="0.5568627451" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
@@ -532,7 +532,7 @@
         <!--Group View Controller-->
         <scene sceneID="8tm-65-Y05">
             <objects>
-                <viewController id="CRC-Go-bZJ" customClass="GroupViewController" customModule="ExpensesDivider" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GroupVC" id="CRC-Go-bZJ" customClass="GroupViewController" customModule="ExpensesDivider" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WSr-uR-PA2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -609,7 +609,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="nGe-L3-g8h">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WhoPaidItem" id="nGe-L3-g8h">
                                         <rect key="frame" x="0.0" y="28" width="362" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nGe-L3-g8h" id="che-sc-mM8">
@@ -666,7 +666,16 @@
                         <color key="backgroundColor" red="1" green="0.90588235289999997" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="ZQS-hI-voH"/>
                     </view>
-                    <navigationItem key="navigationItem" id="5gb-Jq-5Wb"/>
+                    <navigationItem key="navigationItem" id="5gb-Jq-5Wb">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="8pf-hn-XEd"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="descriptionTextField" destination="FsW-Cd-4Rt" id="W0L-bC-88o"/>
+                        <outlet property="errorLabel" destination="nwT-nL-Q8z" id="f0q-lv-h2N"/>
+                        <outlet property="moneyTexTField" destination="HUS-1d-vqX" id="3II-2y-bgf"/>
+                        <outlet property="saveNewBillButton" destination="8pf-hn-XEd" id="Vum-cx-Asq"/>
+                        <outlet property="withWhoSplitTableView" destination="ii5-mQ-7ft" id="KDn-oB-nOw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Hr-EW-Jh5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
