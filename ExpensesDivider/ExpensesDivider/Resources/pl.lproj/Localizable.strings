@@ -16,3 +16,4 @@
 "groupSavingDataError" = "Wystąpił błąd podczas zapisywania danych grupy";
 "sameNameofGroups" = "Nie może być dwóch grup z tymi samymi nazwami";
 "billSavingDataError" = "Wystąpił błąd podczas zapisywania danych rachunku";
+"sameNameofBills" = "Nie może utworzyć dwóch rachunków z taką samą nazwą";

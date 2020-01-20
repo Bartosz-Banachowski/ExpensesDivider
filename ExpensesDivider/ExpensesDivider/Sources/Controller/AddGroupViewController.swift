@@ -21,6 +21,7 @@ class AddGroupViewController: UIViewController, UITableViewDelegate, UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         groupRef = Firestore.firestore().collection("users").document(Auth.auth().currentUser!.uid).collection("groups")
         addedMembersTableView.delegate = self
         addedMembersTableView.dataSource = self

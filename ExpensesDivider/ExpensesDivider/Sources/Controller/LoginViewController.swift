@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginTapped(_ sender: UIButton) {
-//        Auth.auth().signIn(withEmail: "lol@wp.pl", password: "zaq1@WSX")
+//        Auth.auth().signIn(withEmail: "email@wp.pl", password: "zaq1@WSX")
 //        self.goToHome()
         let error = validateField()
 

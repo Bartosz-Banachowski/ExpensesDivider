@@ -9,9 +9,9 @@
 import UIKit
 
 class GroupCell: UITableViewCell {
-    
+
     @IBOutlet weak var groupNameLabel: UILabel!
-    
+
     func setGroup(group: Group) {
         groupNameLabel.text = group.groupName
     }

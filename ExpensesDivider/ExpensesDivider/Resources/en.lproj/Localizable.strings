@@ -16,3 +16,4 @@
 "groupSavingDataError" = "Error occurred during group data saving";
 "sameNameofGroups" = "There cannot be two groups with the same name";
 "billSavingDataError" = "Error occurred during the bill data saving";
+"sameNameofBills" = "There cannot be two bills with the same name";

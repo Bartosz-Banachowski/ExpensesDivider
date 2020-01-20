@@ -21,7 +21,7 @@ struct Group: Codable {
         self.groupName = groupName
         for index in 0..<groupMembers.count {
             self.groupMembers.append(Friend(data: groupMembers[index])!)
-        }    
+        }
     }
 
     init?(groupName: String, groupMembers: [Friend]) {

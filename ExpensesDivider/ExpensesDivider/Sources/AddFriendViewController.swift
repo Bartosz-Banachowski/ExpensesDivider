@@ -22,6 +22,7 @@ class AddFriendViewController: UIViewController, MFMailComposeViewControllerDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         friendsRef = Firestore.firestore().collection("users").document(Auth.auth().currentUser!.uid).collection("friends")
     }
 
