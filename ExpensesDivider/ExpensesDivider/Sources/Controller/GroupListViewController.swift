@@ -36,7 +36,7 @@ class GroupListViewController: UIViewController, UITableViewDelegate, UITableVie
         if segue.destination is GroupViewController {
             let groupVC = segue.destination as? GroupViewController
             if let index = self.groupListTableView.indexPathForSelectedRow {
-                groupVC?.groupName = groupsList[index.row].groupName
+                groupVC?.groupInfo = groupsList[index.row]
             }
         }
     }
@@ -66,7 +66,7 @@ class GroupListViewController: UIViewController, UITableViewDelegate, UITableVie
         NSLog("Succesfuly delete group from the list - \(documentID)")
     }
 
-    // MARK: - Group Table View
+    // MARK: - Group Table View data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

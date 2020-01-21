@@ -17,6 +17,7 @@
 		274C801C23CADA0F00343ED2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274C801B23CADA0F00343ED2 /* SettingsViewController.swift */; };
 		2758DE1823A8FF840079333E /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2758DE1723A8FF840079333E /* CustomLabel.swift */; };
 		275F549A23D2BC0E000B08BE /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275F549923D2BC0E000B08BE /* Bill.swift */; };
+		275F549C23D56967000B08BE /* BillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275F549B23D56967000B08BE /* BillCell.swift */; };
 		2780981CE4C9643B3F683472 /* Pods_ExpensesDivider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79ED922E40549FB3EE8E9C01 /* Pods_ExpensesDivider.framework */; };
 		278129B623CE26CA00921696 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278129B523CE26CA00921696 /* GroupCell.swift */; };
 		278129BA23CE2DBE00921696 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278129B923CE2DBE00921696 /* Group.swift */; };
@@ -34,6 +35,8 @@
 		27C79DBA23964B2A00EA6FC4 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C79DB923964B2A00EA6FC4 /* AddFriendViewController.swift */; };
 		27E4916E23364CB1002BA052 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E4916D23364CB1002BA052 /* Home.storyboard */; };
 		27E49170233652C5002BA052 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E4916F233652C5002BA052 /* Constants.swift */; };
+		27EB020323D64470003E249B /* BillsOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EB020223D64470003E249B /* BillsOperations.swift */; };
+		27EB020523D6D34B003E249B /* SettleUpBillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EB020423D6D34B003E249B /* SettleUpBillViewController.swift */; };
 		27FC018D23D24251007C8316 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FC018C23D24251007C8316 /* GroupViewController.swift */; };
 		27FC018F23D24F57007C8316 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FC018E23D24F57007C8316 /* AddGroupViewController.swift */; };
 		27FC019123D25E30007C8316 /* AddBillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FC019023D25E30007C8316 /* AddBillViewController.swift */; };
@@ -53,6 +56,7 @@
 		274C801B23CADA0F00343ED2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2758DE1723A8FF840079333E /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		275F549923D2BC0E000B08BE /* Bill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
+		275F549B23D56967000B08BE /* BillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillCell.swift; sourceTree = "<group>"; };
 		278129B523CE26CA00921696 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		278129B923CE2DBE00921696 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		278129BC23CE309400921696 /* GroupListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +75,8 @@
 		27C79DB923964B2A00EA6FC4 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		27E4916D23364CB1002BA052 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		27E4916F233652C5002BA052 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		27EB020223D64470003E249B /* BillsOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillsOperations.swift; sourceTree = "<group>"; };
+		27EB020423D6D34B003E249B /* SettleUpBillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettleUpBillViewController.swift; sourceTree = "<group>"; };
 		27FC018C23D24251007C8316 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		27FC018E23D24F57007C8316 /* AddGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		27FC019023D25E30007C8316 /* AddBillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBillViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +164,7 @@
 				2758DE1723A8FF840079333E /* CustomLabel.swift */,
 				2792D66623CD80BD003FAD3B /* FriendCell.swift */,
 				278129B523CE26CA00921696 /* GroupCell.swift */,
+				275F549B23D56967000B08BE /* BillCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,6 +228,8 @@
 				278129BC23CE309400921696 /* GroupListViewController.swift */,
 				27FC018C23D24251007C8316 /* GroupViewController.swift */,
 				27FC019023D25E30007C8316 /* AddBillViewController.swift */,
+				27EB020223D64470003E249B /* BillsOperations.swift */,
+				27EB020423D6D34B003E249B /* SettleUpBillViewController.swift */,
 			);
 			name = GroupViewController;
 			sourceTree = "<group>";
@@ -399,14 +408,17 @@
 				2792D66723CD80BD003FAD3B /* FriendCell.swift in Sources */,
 				27FC018D23D24251007C8316 /* GroupViewController.swift in Sources */,
 				27C79DB723963B2D00EA6FC4 /* CustomButton.swift in Sources */,
+				27EB020523D6D34B003E249B /* SettleUpBillViewController.swift in Sources */,
 				27B9C31822E0F0F9007AF8B6 /* AppDelegate.swift in Sources */,
 				278129B623CE26CA00921696 /* GroupCell.swift in Sources */,
+				275F549C23D56967000B08BE /* BillCell.swift in Sources */,
 				278129BA23CE2DBE00921696 /* Group.swift in Sources */,
 				278A1062233377E2002FCABA /* SignUpViewController.swift in Sources */,
 				27255AAA23CB9FC300EFDAE3 /* NewUser.swift in Sources */,
 				270FF3A5238FBBE900ECA7F1 /* FriendListViewController.swift in Sources */,
 				278129BD23CE309400921696 /* GroupListViewController.swift in Sources */,
 				27E49170233652C5002BA052 /* Constants.swift in Sources */,
+				27EB020323D64470003E249B /* BillsOperations.swift in Sources */,
 				275F549A23D2BC0E000B08BE /* Bill.swift in Sources */,
 				27397B4D23352B3B0092EA9F /* Utilities.swift in Sources */,
 				279BD9EF232A4AAF00F1379F /* HomeViewController.swift in Sources */,

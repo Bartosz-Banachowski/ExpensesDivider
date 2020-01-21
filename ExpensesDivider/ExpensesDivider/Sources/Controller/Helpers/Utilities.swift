@@ -26,4 +26,18 @@ class Utilities {
         errLabel.text = message
         errLabel.alpha = 1
     }
+
+    static func currencyFormatter(currency: Decimal) -> String {
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.numberStyle = .currency
+        currencyFormatter.locale = Locale(identifier: "pl_PL")
+        return currencyFormatter.string(for: currency)!
+    }
+
+    static func dateFormatter(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.locale = Locale(identifier: "en_PL")
+        return dateFormatter.string(from: date)
+    }
 }

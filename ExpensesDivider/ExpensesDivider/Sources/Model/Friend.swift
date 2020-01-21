@@ -11,20 +11,24 @@ import Foundation
 public struct Friend: Codable {
     let username: String
     let email: String
+    var debt: Decimal
 
     init?(data: [String: Any]) {
        guard let username = data["username"] as? String,
-           let email = data["email"] as? String else {
+        let email = data["email"] as? String,
+        let debt = data["debt"] as? Double else {
                return nil
        }
 
         self.username = username
         self.email = email
+        self.debt = Decimal(debt)
     }
 
-    init?(username: String, email: String) {
+    init?(username: String, email: String, debt: Decimal) {
         self.username = username
         self.email = email
+        self.debt = debt
     }
 }
 

@@ -34,7 +34,7 @@ class AddFriendViewController: UIViewController, MFMailComposeViewControllerDele
         } else {
             let username = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-            let newFriend = Friend(username: username!, email: email!)
+            let newFriend = Friend(username: username!, email: email!, debt: Decimal(0))
 
             do {
                 try friendsRef.document(newFriend!.email).setData(from: newFriend)
