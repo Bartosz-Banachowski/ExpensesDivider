@@ -44,8 +44,8 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let billVC = segue.destination as? AddBillViewController
             billVC?.groupInfo = self.groupInfo
         }
-        if segue.destination is SettleUpBillViewController {
-            let billVC = segue.destination as? SettleUpBillViewController
+        if segue.destination is DetailedBillInfoViewController {
+            let billVC = segue.destination as? DetailedBillInfoViewController
             billVC?.groupInfo = self.groupInfo
             if let index = self.billsListTableView.indexPathForSelectedRow {
                 billVC?.billInfo = billsList[index.row]
@@ -72,22 +72,6 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
        billListener?.remove()
        billListener = nil
    }
-
-    func getGroupInfo() {
-        database.collection("users")
-            .document((Auth.auth().currentUser?.uid)!)
-            .collection("groups")
-            .document(groupInfo!.groupName)
-            .getDocument { (documentSnapshot, error) in
-            if let error = error {
-                NSLog("Error getting group member list: \(error)")
-            } else {
-                if let document = documentSnapshot?.data() {
-                    self.groupInfo = Group(data: document)
-                }
-            }
-        }
-    }
 
     func setupGroupView() {
         groupNameLabel.text = groupInfo!.groupName

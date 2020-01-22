@@ -13,17 +13,22 @@ struct BillsOperations {
 
     static func getMoneySummaryColorLabel(bill: Bill) -> UILabel {
         let textLabel = UILabel()
-        let debtors = Decimal(bill.debtorList.count)
 
         if bill.whoPaid == "You" {
             textLabel.textColor = .systemGreen
-            let moneyBorrowed = (bill.money/debtors)*(debtors-1)
+            var moneyBorrowed = Decimal(0)
+            for debtor in bill.debtorList where debtor.username != "You" {
+                moneyBorrowed += debtor.debt
+            }
             textLabel.text = Utilities.currencyFormatter(currency: moneyBorrowed)
             return textLabel
         }
 
         textLabel.textColor = .red
-        let moneyOwed = (bill.money/debtors)
+        var moneyOwed = Decimal(0)
+        for debtor in bill.debtorList where debtor.username == "You" {
+            moneyOwed = debtor.debt
+        }
         textLabel.text = Utilities.currencyFormatter(currency: moneyOwed)
         return textLabel
     }
@@ -31,16 +36,18 @@ struct BillsOperations {
     static func getMyBalance(bills: [Bill]) -> UILabel {
         let textLabel = UILabel()
         var balance: Decimal = 0
-        var debtors: Decimal = 0
         var moneyBorrowed: Decimal = 0
         var moneyOwed: Decimal = 0
 
         for bill in bills {
-            debtors = Decimal(bill.debtorList.count)
             if bill.whoPaid == "You" {
-                moneyBorrowed += (bill.money/debtors)*(debtors-1)
+                for debtor in bill.debtorList where debtor.username != "You" {
+                    moneyBorrowed += debtor.debt
+                }
             } else {
-                moneyOwed += (bill.money/debtors)
+                for debtor in bill.debtorList where debtor.username == "You" {
+                    moneyOwed += debtor.debt
+                }
             }
         }
 

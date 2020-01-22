@@ -18,6 +18,12 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        loginTextField.addTarget(self, action: #selector(clearErrorLabel), for: UIControl.Event.editingDidBegin)
+        passwordTextField.addTarget(self, action: #selector(clearErrorLabel), for: UIControl.Event.editingDidBegin)
+    }
+
+    @objc func clearErrorLabel() {
+        errorLabel.text = ""
     }
 
     func validateField() -> String? {

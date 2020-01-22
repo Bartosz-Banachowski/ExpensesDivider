@@ -74,7 +74,6 @@ class AddBillViewController: UIViewController, UITableViewDataSource, UITableVie
         whoPaidTextField.inputView = whoPaidPicker
         whoPaidArray = groupInfo.groupMembers
         whoPaidArray.append(Friend(username: "You", email: Auth.auth().currentUser!.email!, debt: Decimal(0))!)
-        whoPaidTextField.text = whoPaidArray.last?.username
     }
 
     @objc func saveBill() {
@@ -107,7 +106,7 @@ class AddBillViewController: UIViewController, UITableViewDataSource, UITableVie
         if descriptionTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             moneyTexTField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             dateTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            whoPaidTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            whoPaidTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "who paid" ||
             debtorList.isEmpty == true {
             return NSLocalizedString("emptyFieldsError", comment: "Empty fields error")
         }
@@ -125,7 +124,6 @@ class AddBillViewController: UIViewController, UITableViewDataSource, UITableVie
            } else {
             self.existingBills = []
                for document in querySnapshot!.documents {
-                print("im happy", document.data() )
                    self.existingBills.append(Bill(data: document.data())!)
                }
            }
