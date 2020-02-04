@@ -32,6 +32,7 @@ class AddBillViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         billRef = Firestore.firestore().collection("users").document(Auth.auth().currentUser!.uid).collection("groups").document(groupInfo!.groupName)
+        moneyTexTField.keyboardType = .decimalPad
         setupDatePicker()
         setupSplitType()
         setupWhoPaidPicker()
@@ -73,7 +74,7 @@ class AddBillViewController: UIViewController, UITableViewDataSource, UITableVie
         whoPaidTextField.frame.size.height = CGFloat(exactly: 50)!
         whoPaidTextField.inputView = whoPaidPicker
         whoPaidArray = groupInfo.groupMembers
-        whoPaidArray.append(Friend(username: "You", email: Auth.auth().currentUser!.email!, debt: Decimal(0))!)
+        whoPaidArray.append(Friend(uuid: Auth.auth().currentUser!.uid, username: "You", email: Auth.auth().currentUser!.email!, debt: Decimal(0))!)
     }
 
     @objc func saveBill() {
@@ -86,7 +87,7 @@ class AddBillViewController: UIViewController, UITableViewDataSource, UITableVie
             let money = (moneyTexTField.text?.trimmingCharacters(in: .whitespacesAndNewlines))!
             let date = datePicker?.date
             let whoPaid = whoPaidTextField.text
-            debtorList.append(Friend(username: "You", email: Auth.auth().currentUser!.email!, debt: Decimal(0))!)
+            debtorList.append(Friend(uuid: Auth.auth().currentUser!.uid, username: "You", email: Auth.auth().currentUser!.email!, debt: Decimal(0))!)
             let newBill = Bill(description: description!, money: Decimal(string: money)!, date: date!, whoPaid: whoPaid!,
                                debtorList: BillsOperations.calculateDebtForBill(whoPaid: whoPaid!,
                                                                                 money: Decimal(string: money)!, debtors: debtorList))

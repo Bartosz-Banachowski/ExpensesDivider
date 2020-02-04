@@ -9,23 +9,27 @@
 import Foundation
 
 public struct Friend: Codable {
+    var UUID: String
     let username: String
     let email: String
     var debt: Decimal
 
     init?(data: [String: Any]) {
-       guard let username = data["username"] as? String,
+        guard let uuid = data["UUID"] as? String,
+        let username = data["username"] as? String,
         let email = data["email"] as? String,
         let debt = data["debt"] as? Double else {
                return nil
        }
 
+        self.UUID = uuid
         self.username = username
         self.email = email
         self.debt = Decimal(debt)
     }
 
-    init?(username: String, email: String, debt: Decimal) {
+    init?(uuid: String, username: String, email: String, debt: Decimal) {
+        self.UUID = uuid
         self.username = username
         self.email = email
         self.debt = debt

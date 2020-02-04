@@ -16,14 +16,12 @@ class AddFriendViewController: UIViewController, MFMailComposeViewControllerDele
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
 
-    let database = Firestore.firestore()
-    var friendsRef: CollectionReference!
     var loggedUser: User?
+    let friendManager = FriendManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        friendsRef = Firestore.firestore().collection("users").document(Auth.auth().currentUser!.uid).collection("friends")
     }
 
     @IBAction func addFriendTapped(_ sender: Any) {
@@ -34,13 +32,12 @@ class AddFriendViewController: UIViewController, MFMailComposeViewControllerDele
         } else {
             let username = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-            let newFriend = Friend(username: username!, email: email!, debt: Decimal(0))
+            let newFriend = Friend(uuid: DbConstants.defaultUserUUID, username: username!, email: email!, debt: Decimal(0))
 
-            do {
-                try friendsRef.document(newFriend!.email).setData(from: newFriend)
-            } catch let error {
-                Utilities.showError(NSLocalizedString("userSavingDataError", comment: "Error during saving new friend data"), self.errorLabel)
-                NSLog("New friend saving data error \(error)")
+            friendManager.addFriend(newFriend: newFriend!) { (error) in
+                if error != nil {
+                    Utilities.showError(NSLocalizedString("userSavingDataError", comment: "Error during saving new friend data"), self.errorLabel)
+                }
             }
             self.navigationController?.popViewController(animated: true)
         }
@@ -56,6 +53,8 @@ class AddFriendViewController: UIViewController, MFMailComposeViewControllerDele
         if Utilities.isEmailValid(emailTextField.text!) == false {
             return NSLocalizedString("validationEmailError", comment: "Email is not valid")
         }
+        
+        // sprawdzic czy istnieje juz taki email w bazie
         return nil
     }
 

@@ -18,7 +18,7 @@ class SettleUpBillViewController: UIViewController, UIPickerViewDelegate, UIPick
     var billRef: DocumentReference!
     var groupInfo: Group!
     var billInfo: Bill!
-    
+
     private var personToPay: UIPickerView?
 
     override func viewDidLoad() {

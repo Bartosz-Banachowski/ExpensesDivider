@@ -12,14 +12,11 @@ import Firebase
 class FriendListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var myFriendListTableView: UITableView!
-    let database = Firestore.firestore()
-    var friendsRef: CollectionReference!
     var friendList: [Friend] = []
-    var friendListener: ListenerRegistration?
+    let friendManager = FriendManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        friendsRef = Firestore.firestore().collection("users").document((Auth.auth().currentUser?.uid)!).collection("friends")
         myFriendListTableView.delegate = self
         myFriendListTableView.dataSource = self
     }
@@ -35,29 +32,28 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
 
     func deleteFriendFromDB(whichFriend index: Int) {
+        
+        //TODO
         let documentID = friendList[index].email
-        database.collection("users").document((Auth.auth().currentUser?.uid)!).collection("friends").document(documentID).delete()
+        Firestore.firestore().collection("users").document(Auth.auth().currentUser!.uid).collection("friends").document(documentID).delete()
         NSLog("Succesfuly delete friend from the list - \(documentID)")
     }
 
    // MARK: - Listeners
     func startListeningForFriends() {
-        friendListener = friendsRef.addSnapshotListener { (querySnapshot, error) in
+        friendManager.getAllFriendsListener { friendList, error in
             if let error = error {
-                NSLog("Error getting friend list: \(error)")
+                // dobrze by bylo powiadomic uzytkownika o bledzie
+                print("error: ", error)
             } else {
-                self.friendList = []
-                for document in querySnapshot!.documents {
-                    self.friendList.append(Friend(data: document.data())!)
-                }
+                self.friendList = friendList
+                self.myFriendListTableView.reloadData()
             }
-            self.myFriendListTableView.reloadData()
         }
     }
 
     func stopListeningForFriends() {
-        friendListener?.remove()
-        friendListener = nil
+        friendManager.removeAllFriendsListener()
     }
 
     // MARK: - Table view data source
