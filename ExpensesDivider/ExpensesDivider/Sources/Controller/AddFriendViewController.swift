@@ -17,10 +17,12 @@ class AddFriendViewController: UIViewController, MFMailComposeViewControllerDele
     @IBOutlet weak var errorLabel: UILabel!
 
     var loggedUser: User?
+    var friendsList: [Friend] = []
     let friendManager = FriendManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        getExistingFriends()
         self.hideKeyboardWhenTappedAround()
     }
 
@@ -45,17 +47,31 @@ class AddFriendViewController: UIViewController, MFMailComposeViewControllerDele
 
     func validateField() -> String? {
         //check all field are full in
-        if usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+        let trimmedUsername = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let trimmedEmail = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        if trimmedUsername == "" ||
+            trimmedEmail == "" {
             return NSLocalizedString("emptyFieldsError", comment: "Empty fields error")
         }
 
-        if Utilities.isEmailValid(emailTextField.text!) == false {
+        if Utilities.isEmailValid(trimmedEmail!) == false {
             return NSLocalizedString("validationEmailError", comment: "Email is not valid")
         }
-        
-        // sprawdzic czy istnieje juz taki email w bazie
+
+        for friend in friendsList where friend.email == trimmedEmail {
+            return NSLocalizedString("sameEmailsOfFriends", comment: "Same emails for two different friends")
+        }
         return nil
+    }
+
+    func getExistingFriends() {
+        friendManager.getAllFriends { (friendsList, error) in
+            if error != nil {
+                // error
+            } else {
+                self.friendsList.append(contentsOf: friendsList)
+            }
+        }
     }
 
     func sendEmail(_ recipient: String) {

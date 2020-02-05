@@ -32,11 +32,12 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
 
     func deleteFriendFromDB(whichFriend index: Int) {
-        
-        //TODO
         let documentID = friendList[index].email
-        Firestore.firestore().collection("users").document(Auth.auth().currentUser!.uid).collection("friends").document(documentID).delete()
-        NSLog("Succesfuly delete friend from the list - \(documentID)")
+        friendManager.deleteFriend(who: documentID) { (bool, error) in
+            if error != nil {
+                //print error
+            }
+        }
     }
 
    // MARK: - Listeners

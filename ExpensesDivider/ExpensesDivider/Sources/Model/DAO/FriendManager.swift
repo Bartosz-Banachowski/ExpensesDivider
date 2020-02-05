@@ -20,7 +20,7 @@ class FriendManager: NSObject {
     let usersRef = Firestore.firestore()
         .collection(DbConstants.users)
 
-    //MARK:- CRUD Friend
+    // MARK: - CRUD Friend
     func addFriend(newFriend: Friend, completion: @escaping (Error?) -> Void) {
         var friend = newFriend
         // Checking whether added friend exists in DB, if yes then linking UUID to friend object
@@ -68,7 +68,7 @@ class FriendManager: NSObject {
         var friendList = [Friend]()
         friendListener = friendsRef.addSnapshotListener { (querySnapshot, error) in
             if let error = error {
-                NSLog("Error getting friend list: \(error)")
+                NSLog("Error getting friend list from listener: \(error)")
                 completion(friendList, error)
                 return
             } else {
@@ -79,6 +79,7 @@ class FriendManager: NSObject {
             }
             completion(friendList, nil)
         }
+        NSLog("Succesfuly establish listener to friends list")
     }
 
     func removeAllFriendsListener() {
@@ -86,7 +87,30 @@ class FriendManager: NSObject {
         friendListener = nil
     }
 
-    func deleteFriend() {
-        
+    func getAllFriends(completion: @escaping ([Friend], Error?) -> Void) {
+        var friendsList: [Friend] = []
+        friendsRef.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                NSLog("Error getting friend list: \(error)")
+                completion(friendsList, error)
+            } else {
+                for doc in querySnapshot!.documents {
+                    friendsList.append(Friend(data: doc.data())!)
+                }
+            }
+            completion(friendsList, nil)
+        }
+        NSLog("Succesfuly get all friends list")
+    }
+
+    func deleteFriend(who friendID: String, completion: @escaping(Bool, Error?) -> Void) {
+        friendsRef.document(friendID).delete { (error) in
+            if error != nil {
+                NSLog("Error deleting friend from the list: \(error)")
+                completion(false, error)
+            }
+        }
+        NSLog("Succesfuly delete friend from the list - \(friendID)")
+        completion(true, nil)
     }
 }
