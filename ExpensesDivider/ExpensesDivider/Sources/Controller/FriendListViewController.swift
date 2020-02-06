@@ -33,11 +33,45 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
 
     func deleteFriendFromDB(whichFriend index: Int) {
         let documentID = friendList[index].email
-        friendManager.deleteFriend(who: documentID) { (bool, error) in
+        friendManager.deleteFriend(who: documentID) { (error) in
             if error != nil {
                 //print error
             }
         }
+    }
+
+    func updateFriendInDB(whichFriend index: Int) {
+        let documentID = friendList[index].email
+        friendManager.activateFriend(who: documentID) { (error) in
+            if error != nil {
+                //print error
+            }
+        }
+    }
+
+    func checkInvitations(list: [Friend], completion: @escaping ([Friend]) -> Void) {
+        var friendList = list
+        var invitationAlert: UIAlertController?
+        let index = friendList.firstIndex { (friend) -> Bool in
+            friend.isAccepted == false
+        }
+
+        if let index = index {
+            invitationAlert = AlertService.getYesNoPopup(title: NSLocalizedString("InvitationTitle", comment: "Friend invitation"),
+                                                         body: NSLocalizedString("InvitationBody", comment: "Friend invitation")
+                                                            + friendList[index].email,
+                                                         completionYes: {
+                                                            friendList[index].isAccepted = true
+                                                            self.updateFriendInDB(whichFriend: index)
+            }, completionNo: {
+                self.deleteFriendFromDB(whichFriend: index)
+            })
+        }
+
+        if let invitationAlert = invitationAlert {
+            self.present(invitationAlert, animated: true, completion: nil)
+        }
+        completion(friendList)
     }
 
    // MARK: - Listeners
@@ -47,8 +81,10 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
                 // dobrze by bylo powiadomic uzytkownika o bledzie
                 print("error: ", error)
             } else {
-                self.friendList = friendList
-                self.myFriendListTableView.reloadData()
+                self.checkInvitations(list: friendList) { friends in
+                    self.friendList = friends
+                    self.myFriendListTableView.reloadData()
+                }
             }
         }
     }

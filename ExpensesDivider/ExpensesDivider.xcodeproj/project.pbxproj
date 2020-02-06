@@ -26,6 +26,7 @@
 		278A1062233377E2002FCABA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278A1061233377E2002FCABA /* SignUpViewController.swift */; };
 		2792D66723CD80BD003FAD3B /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2792D66623CD80BD003FAD3B /* FriendCell.swift */; };
 		279BD9EF232A4AAF00F1379F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BD9EE232A4AAF00F1379F /* HomeViewController.swift */; };
+		27A4D7C923EABB4900BDC2C6 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A4D7C823EABB4900BDC2C6 /* AlertService.swift */; };
 		27B9C31822E0F0F9007AF8B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B9C31722E0F0F9007AF8B6 /* AppDelegate.swift */; };
 		27B9C31A22E0F0F9007AF8B6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B9C31922E0F0F9007AF8B6 /* LoginViewController.swift */; };
 		27B9C31D22E0F0F9007AF8B6 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27B9C31B22E0F0F9007AF8B6 /* Login.storyboard */; };
@@ -69,6 +70,7 @@
 		27931BA822E0F61400975E5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		27931BA922E0F61400975E5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		279BD9EE232A4AAF00F1379F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		27A4D7C823EABB4900BDC2C6 /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 		27B9C31422E0F0F9007AF8B6 /* ExpensesDivider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpensesDivider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27B9C31722E0F0F9007AF8B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27B9C31922E0F0F9007AF8B6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 		27931BA522E0F48700975E5C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				27A4D7C723EABAB100BDC2C6 /* Service */,
 				279BD9F0232A4BD900F1379F /* Helpers */,
 				27C6DCE923CEF1190060D024 /* AccountViewController */,
 				2767883023E5C03E00422E97 /* FriendViewController */,
@@ -227,6 +230,14 @@
 				27E4916F233652C5002BA052 /* Constants.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		27A4D7C723EABAB100BDC2C6 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				27A4D7C823EABB4900BDC2C6 /* AlertService.swift */,
+			);
+			name = Service;
 			sourceTree = "<group>";
 		};
 		27B9C30B22E0F0F9007AF8B6 = {
@@ -426,6 +437,7 @@
 				27FC018F23D24F57007C8316 /* AddGroupViewController.swift in Sources */,
 				27C4C90223E5D3EA005C05F4 /* DbConstants.swift in Sources */,
 				27397B4F233536370092EA9F /* Extensions.swift in Sources */,
+				27A4D7C923EABB4900BDC2C6 /* AlertService.swift in Sources */,
 				2758DE1823A8FF840079333E /* CustomLabel.swift in Sources */,
 				27C6DCEB23CEF24A0060D024 /* AddNewGroupMemberViewController.swift in Sources */,
 				27FC019123D25E30007C8316 /* AddBillViewController.swift in Sources */,

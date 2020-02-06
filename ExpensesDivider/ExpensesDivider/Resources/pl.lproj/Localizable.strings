@@ -6,6 +6,7 @@
   Copyright © 2019 Banachowski Bartosz. All rights reserved.
 */
 
+//error strings
 "emptyFieldsError" = "Proszę wypełnić wszystkie pola poprawnie";
 "validationPasswordError" = "Hasło musi zawierać conajmniej 8 znaków w tym co najmniej litere, liczbe i znak specjalny";
 "validationEmailError" = "Adres email jest nieprawidłowy";
@@ -18,3 +19,9 @@
 "billSavingDataError" = "Wystąpił błąd podczas zapisywania danych rachunku";
 "sameNameofBills" = "Nie można utworzyć dwóch rachunków z taką samą nazwą";
 "sameEmailsOfFriends" = "Nie można utworzyć dwóch znajomych z takim samym adresem e-mail";
+
+//dialog strings
+"InvitationTitle" = "Oczekujące zaproszenia";
+"InvitationBody" = "Czy chciałbyś dodać nowego znajomego do listy znajomych - ";
+
+

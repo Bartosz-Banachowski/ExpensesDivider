@@ -34,7 +34,7 @@ class AddFriendViewController: UIViewController, MFMailComposeViewControllerDele
         } else {
             let username = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-            let newFriend = Friend(uuid: DbConstants.defaultUserUUID, username: username!, email: email!, debt: Decimal(0))
+            let newFriend = Friend(uuid: DbConstants.defaultUserUUID, username: username!, email: email!, debt: Decimal(0), isAccepted: true)
 
             friendManager.addFriend(newFriend: newFriend!) { (error) in
                 if error != nil {

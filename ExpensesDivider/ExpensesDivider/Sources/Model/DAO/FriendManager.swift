@@ -41,13 +41,15 @@ class FriendManager: NSObject {
                     if let error = error {
                         NSLog("Error during getting user information: \(error)")
                     } else {
-                        let currentUserAsFriend = Friend(uuid: document?.data()!["uid"] as? String ?? loggedUser.uid,
+                        var currentUserAsFriend = Friend(uuid: document?.data()!["uid"] as? String ?? loggedUser.uid,
                                                          username: document?.data()!["username"] as? String ?? "",
                                                          email: document?.data()!["email"] as? String ?? loggedUser.email!,
-                                                         debt: Decimal(0))!
+                                                         debt: Decimal(0),
+                                                         isAccepted: true)!
                         do {
                             try self.friendsRef.document(friend.email).setData(from: friend)
                             if friend.UUID != "" {
+                                currentUserAsFriend.isAccepted = false
                                 try self.usersRef.document(friend.UUID)
                                     .collection(DbConstants.friends)
                                     .document(currentUserAsFriend.email)
@@ -103,14 +105,25 @@ class FriendManager: NSObject {
         NSLog("Succesfuly get all friends list")
     }
 
-    func deleteFriend(who friendID: String, completion: @escaping(Bool, Error?) -> Void) {
+    func deleteFriend(who friendID: String, completion: @escaping(Error?) -> Void) {
         friendsRef.document(friendID).delete { (error) in
-            if error != nil {
+            if let error = error {
                 NSLog("Error deleting friend from the list: \(error)")
-                completion(false, error)
+                completion(error)
             }
         }
         NSLog("Succesfuly delete friend from the list - \(friendID)")
-        completion(true, nil)
+        completion(nil)
+    }
+
+    func activateFriend(who friendID: String, completion: @escaping(Error?) -> Void) {
+        friendsRef.document(friendID).updateData([DbConstants.isAcceptedField: true]) { (error) in
+            if let error = error {
+                NSLog("Error during activation of the friend: \(error)")
+                completion(error)
+            }
+        }
+        NSLog("Succesfuly activate friend from the list - \(friendID)")
+        completion(nil)
     }
 }

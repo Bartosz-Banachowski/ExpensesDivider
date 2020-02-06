@@ -6,6 +6,7 @@
   Copyright © 2019 Banachowski Bartosz. All rights reserved.
 */
 
+//error strings
 "emptyFieldsError" = "Please fill in all fields correctly";
 "validationPasswordError" = "Password need to have at least 8 characters within letters, numbers and special character";
 "validationEmailError" = "Email address is not valid";
@@ -18,3 +19,7 @@
 "billSavingDataError" = "Error occurred during the bill data saving";
 "sameNameofBills" = "There cannot be two bills with the same name";
 "sameEmailsOfFriends" = "There cannot be two friends with the same email";
+
+//dialogs strings
+"InvitationTitle" = "Pending invitations";
+"InvitationBody" = "Would you like to add new friend to your list - ";
