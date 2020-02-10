@@ -12,14 +12,11 @@ import Firebase
 class GroupListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var groupListTableView: UITableView!
-    let database = Firestore.firestore()
-    var groupsRef: CollectionReference!
-    var groupsList: [Group] = []
-    var groupListener: ListenerRegistration?
+    let groupManager = GroupManager()
+    var groupList: [Group] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        groupsRef = Firestore.firestore().collection("users").document((Auth.auth().currentUser?.uid)!).collection("groups")
         groupListTableView.delegate = self
         groupListTableView.dataSource = self
     }
@@ -36,34 +33,41 @@ class GroupListViewController: UIViewController, UITableViewDelegate, UITableVie
         if segue.destination is GroupViewController {
             let groupVC = segue.destination as? GroupViewController
             if let index = self.groupListTableView.indexPathForSelectedRow {
-                groupVC?.groupInfo = groupsList[index.row]
+                groupVC?.groupInfo = groupList[index.row]
             }
         }
     }
 
     func startListeningForGroup() {
-        groupListener = groupsRef.addSnapshotListener { (querySnapshot, error) in
-            if let error = error {
-                NSLog("Error getting group list: \(error)")
+        groupManager.getGroupsListener { (groupList, error) in
+            if error != nil {
+                let errorAlert = AlertService.getErrorPopup(title: NSLocalizedString("ErrorTitle", comment: "error"),
+                                                            body: NSLocalizedString("ErrorBody", comment: "Error"))
+                self.present(errorAlert, animated: true, completion: nil)
             } else {
-                self.groupsList = []
-                for document in querySnapshot!.documents {
-                    self.groupsList.append(Group(data: document.data())!)
-                }
+                self.groupList = groupList
+                self.groupListTableView.reloadData()
             }
-            self.groupListTableView.reloadData()
         }
     }
 
     func stopListeningForGroup() {
-        groupListener?.remove()
-        groupListener = nil
+        groupManager.removeGroupsListener()
     }
 
     func deleteGroupFromDB(whichGroup index: Int) {
-        let documentID = groupsList[index].groupName
-        database.collection("users").document((Auth.auth().currentUser?.uid)!).collection("groups").document(documentID).delete()
-        NSLog("Succesfuly delete group from the list - \(documentID)")
+        if let documentID = groupList[index].UUID {
+            groupManager.deleteGroup(which: documentID) { (error) in
+                if error != nil {
+                    let errorAlert = AlertService.getErrorPopup(title: NSLocalizedString("ErrorTitle", comment: "error"),
+                                                                body: NSLocalizedString("ErrorBody", comment: "error"))
+                    self.present(errorAlert, animated: true, completion: nil)
+                }
+            }
+        }
+        let errorAlert = AlertService.getErrorPopup(title: NSLocalizedString("ErrorTitle", comment: "error"),
+                                                    body: NSLocalizedString("ErrorBody", comment: "error"))
+        self.present(errorAlert, animated: true, completion: nil)
     }
 
     // MARK: - Group Table View data source
@@ -73,7 +77,7 @@ class GroupListViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groupsList.count
+        return groupList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,7 +85,7 @@ class GroupListViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupListItem", for: indexPath) as! GroupCell
         // swiftlint:enable force_cast
 
-        let group = groupsList[indexPath.row]
+        let group = groupList[indexPath.row]
         cell.setGroup(group: group)
         return cell
     }
@@ -93,7 +97,7 @@ class GroupListViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             deleteGroupFromDB(whichGroup: indexPath.row)
-            groupsList.remove(at: indexPath.row)
+            groupList.remove(at: indexPath.row)
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.endUpdates()

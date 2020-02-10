@@ -35,7 +35,9 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
         let documentID = friendList[index].email
         friendManager.deleteFriend(who: documentID) { (error) in
             if error != nil {
-                //print error
+                let errorAlert = AlertService.getErrorPopup(title: NSLocalizedString("ErrorTitle", comment: "error"),
+                                                            body: NSLocalizedString("ErrorBody", comment: "error"))
+                self.present(errorAlert, animated: true, completion: nil)
             }
         }
     }
@@ -44,7 +46,9 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
         let documentID = friendList[index].email
         friendManager.activateFriend(who: documentID) { (error) in
             if error != nil {
-                //print error
+                let errorAlert = AlertService.getErrorPopup(title: NSLocalizedString("ErrorTitle", comment: "error"),
+                                                            body: NSLocalizedString("ErrorBody", comment: "error"))
+                self.present(errorAlert, animated: true, completion: nil)
             }
         }
     }
@@ -76,10 +80,11 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
 
    // MARK: - Listeners
     func startListeningForFriends() {
-        friendManager.getAllFriendsListener { friendList, error in
-            if let error = error {
-                // dobrze by bylo powiadomic uzytkownika o bledzie
-                print("error: ", error)
+        friendManager.getFriendsListener { friendList, error in
+            if error != nil {
+                let errorAlert = AlertService.getErrorPopup(title: NSLocalizedString("ErrorTitle", comment: "error"),
+                                                            body: NSLocalizedString("ErrorBody", comment: "Error"))
+                self.present(errorAlert, animated: true, completion: nil)
             } else {
                 self.checkInvitations(list: friendList) { friends in
                     self.friendList = friends
@@ -90,7 +95,7 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
 
     func stopListeningForFriends() {
-        friendManager.removeAllFriendsListener()
+        friendManager.removeFriendsListener()
     }
 
     // MARK: - Table view data source

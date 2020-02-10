@@ -58,6 +58,7 @@ class FriendManager: NSObject {
                             NSLog("Succesfuly added friend to the list - \(friend.email)")
                         } catch let error {
                             NSLog("New friend saving data error \(error)")
+                            completion(error)
                         }
                     }
                 }
@@ -66,7 +67,7 @@ class FriendManager: NSObject {
         }
     }
 
-    func getAllFriendsListener(completion: @escaping ([Friend], Error?) -> Void) {
+    func getFriendsListener(completion: @escaping ([Friend], Error?) -> Void) {
         var friendList = [Friend]()
         friendListener = friendsRef.addSnapshotListener { (querySnapshot, error) in
             if let error = error {
@@ -84,12 +85,12 @@ class FriendManager: NSObject {
         NSLog("Succesfuly establish listener to friends list")
     }
 
-    func removeAllFriendsListener() {
+    func removeFriendsListener() {
         friendListener?.remove()
         friendListener = nil
     }
 
-    func getAllFriends(completion: @escaping ([Friend], Error?) -> Void) {
+    func getFriends(completion: @escaping ([Friend], Error?) -> Void) {
         var friendsList: [Friend] = []
         friendsRef.getDocuments { (querySnapshot, error) in
             if let error = error {

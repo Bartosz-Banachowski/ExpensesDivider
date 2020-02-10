@@ -23,3 +23,5 @@
 //dialogs strings
 "InvitationTitle" = "Pending invitations";
 "InvitationBody" = "Would you like to add new friend to your list - ";
+"ErrorTitle" = "Error";
+"ErrorBody" = "There was a problem during executing the operation";

@@ -14,7 +14,7 @@ public struct Bill: Codable {
     var money: Decimal
     var date: Date
     var whoPaid: String
-    var debtorList: [Friend] = []
+    var debtorList: [GroupMember] = []
 
     init?(data: [String: Any]) {
         guard let debtorList = data["debtorList"] as? [[String: Any]],
@@ -28,13 +28,13 @@ public struct Bill: Codable {
         self.description = description
         self.money = Decimal(money)
         for index in 0..<debtorList.count {
-            self.debtorList.append(Friend(data: debtorList[index])!)
+            self.debtorList.append(GroupMember(data: debtorList[index])!)
         }
         self.date = date.dateValue()
         self.whoPaid = whoPaid
     }
 
-    init?(description: String, money: Decimal, date: Date, whoPaid: String, debtorList: [Friend]) {
+    init?(description: String, money: Decimal, date: Date, whoPaid: String, debtorList: [GroupMember]) {
         self.description = description
         self.money = money
         self.date = date

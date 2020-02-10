@@ -22,8 +22,8 @@ class AddBillViewController: UIViewController, UITableViewDataSource, UITableVie
     let database = Firestore.firestore()
     var billRef: DocumentReference!
     var groupInfo: Group!
-    var debtorList: [Friend] = []
-    var whoPaidArray: [Friend] = []
+    var debtorList: [GroupMember] = []
+    var whoPaidArray: [GroupMember] = []
     var existingBills: [Bill] = []
 
     private var datePicker: UIDatePicker?
@@ -74,7 +74,7 @@ class AddBillViewController: UIViewController, UITableViewDataSource, UITableVie
         whoPaidTextField.frame.size.height = CGFloat(exactly: 50)!
         whoPaidTextField.inputView = whoPaidPicker
         whoPaidArray = groupInfo.groupMembers
-        whoPaidArray.append(Friend(uuid: Auth.auth().currentUser!.uid, username: "You", email: Auth.auth().currentUser!.email!, debt: Decimal(0), isAccepted: true)!)
+        whoPaidArray.append(GroupMember(username: "You", email: Auth.auth().currentUser!.email!, debt: Decimal(0))!)
     }
 
     @objc func saveBill() {
@@ -87,7 +87,7 @@ class AddBillViewController: UIViewController, UITableViewDataSource, UITableVie
             let money = (moneyTexTField.text?.trimmingCharacters(in: .whitespacesAndNewlines))!
             let date = datePicker?.date
             let whoPaid = whoPaidTextField.text
-            debtorList.append(Friend(uuid: Auth.auth().currentUser!.uid, username: "You", email: Auth.auth().currentUser!.email!, debt: Decimal(0), isAccepted: true)!)
+            debtorList.append(GroupMember(username: "You", email: Auth.auth().currentUser!.email!, debt: Decimal(0))!)
             let newBill = Bill(description: description!, money: Decimal(string: money)!, date: date!, whoPaid: whoPaid!,
                                debtorList: BillsOperations.calculateDebtForBill(whoPaid: whoPaid!,
                                                                                 money: Decimal(string: money)!, debtors: debtorList))
@@ -151,7 +151,7 @@ class AddBillViewController: UIViewController, UITableViewDataSource, UITableVie
     }
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        debtorList.removeAll {$0 == groupInfo.groupMembers[indexPath.row]}
+        debtorList.removeAll {$0.email == groupInfo.groupMembers[indexPath.row].email}
         if tableView.indexPathsForSelectedRows == nil {
             debtorList = []
         }

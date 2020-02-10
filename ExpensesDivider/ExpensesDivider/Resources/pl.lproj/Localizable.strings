@@ -23,5 +23,6 @@
 //dialog strings
 "InvitationTitle" = "Oczekujące zaproszenia";
 "InvitationBody" = "Czy chciałbyś dodać nowego znajomego do listy znajomych - ";
-
+"ErrorTitle" = "Błąd";
+"ErrorBody" = "Wystąpił problem podczas wykonywania operacji";
 

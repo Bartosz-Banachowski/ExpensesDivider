@@ -23,4 +23,13 @@ class AlertService {
 
         return alert
     }
+
+    static func getErrorPopup(title: String, body: String) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: body, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+
+        return alert
+    }
 }

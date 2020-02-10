@@ -65,9 +65,9 @@ class AddFriendViewController: UIViewController, MFMailComposeViewControllerDele
     }
 
     func getExistingFriends() {
-        friendManager.getAllFriends { (friendsList, error) in
-            if error != nil {
-                // error
+        friendManager.getFriends { (friendsList, error) in
+            if let error = error {
+                NSLog("Error getting friend list: \(error)")
             } else {
                 self.friendsList.append(contentsOf: friendsList)
             }

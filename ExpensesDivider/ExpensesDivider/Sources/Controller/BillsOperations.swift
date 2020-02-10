@@ -61,10 +61,10 @@ struct BillsOperations {
         return textLabel
     }
 
-    static func calculateDebtForBill(whoPaid: String, money: Decimal, debtors: [Friend]) -> [Friend] {
+    static func calculateDebtForBill(whoPaid: String, money: Decimal, debtors: [GroupMember]) -> [GroupMember] {
         let numberOfDebtors = Decimal(debtors.count)
         let calculatedDebt = (money/numberOfDebtors)
-        var calculatedDebtors: [Friend] = debtors
+        var calculatedDebtors: [GroupMember] = debtors
         for index in 0..<calculatedDebtors.count {
             calculatedDebtors[index].debt = calculatedDebt
         }

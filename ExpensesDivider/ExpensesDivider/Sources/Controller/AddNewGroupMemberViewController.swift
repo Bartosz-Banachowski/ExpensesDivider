@@ -17,54 +17,51 @@ class AddNewGroupMemberViewController: UIViewController, UITableViewDataSource, 
 
     @IBOutlet weak var friendListTableView: UITableView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    let database = Firestore.firestore()
     weak var delegate: AddMembersDelegate?
-    var friendsRef: CollectionReference!
-    var friendsList: [Friend] = []
+    var friendManager = FriendManager()
+    var friendList: [Friend] = []
     var pickedMemberList: [Friend]!
     var selectedCells: [Int] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        friendsRef = Firestore.firestore().collection("users").document((Auth.auth().currentUser?.uid)!).collection("friends")
         friendListTableView.delegate = self
         friendListTableView.dataSource = self
         saveButton.target = self
         saveButton.action = #selector(saveMembers)
-        getAllFriendsList()
+        getAllFriendList()
     }
 
     @objc func saveMembers() {
         pickedMemberList = []
         for cell in selectedCells {
-            pickedMemberList.append(friendsList[cell])
+            pickedMemberList.append(friendList[cell])
         }
 
         delegate?.addMembers(members: pickedMemberList)
     }
 
-    func getAllFriendsList() {
-        friendsRef.getDocuments { (querySnapshot, error) in
-            if let error = error {
-                NSLog("Error getting friend list: \(error)")
+    func getAllFriendList() {
+        friendManager.getFriends { (friendList, error) in
+            if error != nil {
+                let errorAlert = AlertService.getErrorPopup(title: NSLocalizedString("ErrorTitle", comment: "error"),
+                                                            body: NSLocalizedString("ErrorBody", comment: "Error"))
+                self.present(errorAlert, animated: true, completion: nil)
             } else {
-                self.friendsList = []
-                for document in querySnapshot!.documents {
-                    self.friendsList.append(Friend(data: document.data())!)
-                }
+                self.friendList = friendList
+                self.friendListTableView.reloadData()
             }
-            self.friendListTableView.reloadData()
         }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friendsList.count
+        return friendList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "memberListItem", for: indexPath)
 
-        let friend = friendsList[indexPath.row]
+        let friend = friendList[indexPath.row]
         cell.textLabel?.text = friend.username
         return cell
     }
