@@ -43,7 +43,7 @@ class AddGroupViewController: UIViewController, UITableViewDelegate, UITableView
         } else {
             let groupName = groupNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
             getGroupMembers()
-            let accessList = AccessControlList(members: friendList, admin: userManager.currentLoggedUserID)
+            let accessList = AccessControlList(members: friendList, admin: userManager.loggedUserID)
             let newGroup = Group(groupName: groupName!, groupMembers: memberList, accessControlList: accessList!)
 
             groupManager.addGroup(newGroup: newGroup!) { (error) in
@@ -72,13 +72,12 @@ class AddGroupViewController: UIViewController, UITableViewDelegate, UITableView
         for index in 0..<friendList.count {
             memberList.append(GroupMember(username: friendList[index].username, email: friendList[index].email, debt: Decimal(0))!)
         }
+        memberList.append(GroupMember(username: userManager.loggedUserUsername, email: userManager.loggedUserEmail, debt: Decimal(0))!)
     }
 
     private func getExistingGroups() {
         groupManager.getGroups { (existingGroups, error) in
-            if let error = error {
-                NSLog("Error getting group list: \(error)")
-            } else {
+            if error == nil {
                 self.existingGroups = existingGroups
             }
         }

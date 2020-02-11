@@ -28,11 +28,11 @@ class AddNewGroupMemberViewController: UIViewController, UITableViewDataSource, 
         friendListTableView.delegate = self
         friendListTableView.dataSource = self
         saveButton.target = self
-        saveButton.action = #selector(saveMembers)
+        saveButton.action = #selector(saveMembersTapped)
         getAllFriendList()
     }
 
-    @objc func saveMembers() {
+    @objc func saveMembersTapped() {
         pickedMemberList = []
         for cell in selectedCells {
             pickedMemberList.append(friendList[cell])

@@ -13,6 +13,7 @@ struct DbConstants {
     static let users = "users"
     static let friends = "friends"
     static let groups = "groups"
+    static let bills = "bills"
 
 //fields name
     static let emailField = "email"

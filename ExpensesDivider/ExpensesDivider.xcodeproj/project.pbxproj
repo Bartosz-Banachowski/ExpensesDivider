@@ -46,6 +46,7 @@
 		27E49170233652C5002BA052 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E4916F233652C5002BA052 /* Constants.swift */; };
 		27EB020323D64470003E249B /* BillsOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EB020223D64470003E249B /* BillsOperations.swift */; };
 		27EB020523D6D34B003E249B /* DetailedBillInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EB020423D6D34B003E249B /* DetailedBillInfoViewController.swift */; };
+		27EB363723F287020098B730 /* BillManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EB363623F287020098B730 /* BillManager.swift */; };
 		27FC018D23D24251007C8316 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FC018C23D24251007C8316 /* GroupViewController.swift */; };
 		27FC018F23D24F57007C8316 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FC018E23D24F57007C8316 /* AddGroupViewController.swift */; };
 		27FC019123D25E30007C8316 /* AddBillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FC019023D25E30007C8316 /* AddBillViewController.swift */; };
@@ -95,6 +96,7 @@
 		27E4916F233652C5002BA052 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		27EB020223D64470003E249B /* BillsOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillsOperations.swift; sourceTree = "<group>"; };
 		27EB020423D6D34B003E249B /* DetailedBillInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedBillInfoViewController.swift; sourceTree = "<group>"; };
+		27EB363623F287020098B730 /* BillManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillManager.swift; sourceTree = "<group>"; };
 		27FC018C23D24251007C8316 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		27FC018E23D24F57007C8316 /* AddGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		27FC019023D25E30007C8316 /* AddBillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBillViewController.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				2767883423E5D16300422E97 /* FriendManager.swift */,
 				27B5290923EC000100A76A93 /* GroupManager.swift */,
 				27B2FF5E23ED80A60068A691 /* UserManager.swift */,
+				27EB363623F287020098B730 /* BillManager.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				278129BD23CE309400921696 /* GroupListViewController.swift in Sources */,
 				27E49170233652C5002BA052 /* Constants.swift in Sources */,
 				27EB020323D64470003E249B /* BillsOperations.swift in Sources */,
+				27EB363723F287020098B730 /* BillManager.swift in Sources */,
 				275F549A23D2BC0E000B08BE /* Bill.swift in Sources */,
 				27397B4D23352B3B0092EA9F /* Utilities.swift in Sources */,
 				27B2FF5D23ED75E90068A691 /* AccessControlList.swift in Sources */,

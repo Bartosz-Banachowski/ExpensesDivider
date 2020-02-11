@@ -11,13 +11,13 @@ import UIKit
 
 struct BillsOperations {
 
-    static func getMoneySummaryColorLabel(bill: Bill) -> UILabel {
+    static func getMoneySummaryColorLabel(bill: Bill, currentLoggedUser: String) -> UILabel {
         let textLabel = UILabel()
 
-        if bill.whoPaid == "You" {
+        if bill.whoPaid == currentLoggedUser {
             textLabel.textColor = .systemGreen
             var moneyBorrowed = Decimal(0)
-            for debtor in bill.debtorList where debtor.username != "You" {
+            for debtor in bill.debtorList where debtor.email != currentLoggedUser {
                 moneyBorrowed += debtor.debt
             }
             textLabel.text = Utilities.currencyFormatter(currency: moneyBorrowed)
@@ -26,26 +26,26 @@ struct BillsOperations {
 
         textLabel.textColor = .red
         var moneyOwed = Decimal(0)
-        for debtor in bill.debtorList where debtor.username == "You" {
+        for debtor in bill.debtorList where debtor.email == currentLoggedUser {
             moneyOwed = debtor.debt
         }
         textLabel.text = Utilities.currencyFormatter(currency: moneyOwed)
         return textLabel
     }
 
-    static func getMyBalance(bills: [Bill]) -> UILabel {
+    static func getMyBalance(bills: [Bill], user: String) -> UILabel {
         let textLabel = UILabel()
         var balance: Decimal = 0
         var moneyBorrowed: Decimal = 0
         var moneyOwed: Decimal = 0
-
+//TODO BALANCE
         for bill in bills {
-            if bill.whoPaid == "You" {
-                for debtor in bill.debtorList where debtor.username != "You" {
+            if bill.whoPaid == user {
+                for debtor in bill.debtorList where debtor.username != user {
                     moneyBorrowed += debtor.debt
                 }
             } else {
-                for debtor in bill.debtorList where debtor.username == "You" {
+                for debtor in bill.debtorList where debtor.username == user {
                     moneyOwed += debtor.debt
                 }
             }

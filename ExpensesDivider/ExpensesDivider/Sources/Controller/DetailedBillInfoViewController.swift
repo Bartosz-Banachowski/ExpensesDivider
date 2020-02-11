@@ -15,8 +15,8 @@ class DetailedBillInfoViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet weak var billDateLabel: UILabel!
     @IBOutlet weak var billMoney: UILabel!
     @IBOutlet weak var splitDetailsTableView: UITableView!
-    var billListener: ListenerRegistration?
-    var billRef: DocumentReference!
+    var billManager: BillManager!
+
     var splitDetailsBills: [Group] = []
     var groupInfo: Group!
     var billInfo: Bill!
@@ -24,8 +24,6 @@ class DetailedBillInfoViewController: UIViewController, UITableViewDataSource, U
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        billRef = Firestore.firestore().collection("users").document(Auth.auth().currentUser!.uid).collection("groups")
-            .document(groupInfo!.groupName).collection("bills").document(billInfo.description)
         detailedBill = billInfo
         setupView()
         splitDetailsTableView.delegate = self
@@ -39,21 +37,22 @@ class DetailedBillInfoViewController: UIViewController, UITableViewDataSource, U
     override func viewWillDisappear(_ animated: Bool) {
         stopListeningForDetailedBill()
     }
-    
+
     func startListeningForDetailedBill() {
-         billListener = billRef.addSnapshotListener { (querySnapshot, error) in
-             if let error = error {
-                 NSLog("Error getting detailed bill info: \(error)")
-             } else {
-                self.detailedBill = Bill(data: (querySnapshot?.data())!)
-             }
-             self.splitDetailsTableView.reloadData()
-         }
+        billManager.getDetailedBillListener(UUID: billInfo.description) { (bill, error) in
+            if error != nil {
+                let errorAlert = AlertService.getErrorPopup(title: NSLocalizedString("ErrorTitle", comment: "error"),
+                                                            body: NSLocalizedString("ErrorBody", comment: "Error"))
+                self.present(errorAlert, animated: true, completion: nil)
+            } else {
+                self.detailedBill = bill
+                self.splitDetailsTableView.reloadData()
+            }
+        }
     }
 
     func stopListeningForDetailedBill() {
-        billListener?.remove()
-        billListener = nil
+        billManager.removeDetailedBillListener()
     }
 
     func setupView() {
@@ -67,6 +66,7 @@ class DetailedBillInfoViewController: UIViewController, UITableViewDataSource, U
             let billVC = segue.destination as? SettleUpBillViewController
             billVC?.groupInfo = self.groupInfo
             billVC?.billInfo = self.billInfo
+            billVC?.billManager = self.billManager
         }
     }
 

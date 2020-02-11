@@ -33,6 +33,7 @@ class GroupListViewController: UIViewController, UITableViewDelegate, UITableVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is GroupViewController {
             let groupVC = segue.destination as? GroupViewController
+            groupVC?.userManager = userManager
             if let index = self.groupListTableView.indexPathForSelectedRow {
                 groupVC?.groupInfo = groupList[index.row]
             }
@@ -97,7 +98,7 @@ class GroupListViewController: UIViewController, UITableViewDelegate, UITableVie
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            if groupList[indexPath.row].accessControlList[userManager.currentLoggedUserID] == AccessLevel.admin {
+            if groupList[indexPath.row].accessControlList[userManager.loggedUserID] == AccessLevel.admin {
                 deleteGroupFromDB(whichGroup: indexPath.row)
                 groupList.remove(at: indexPath.row)
                 tableView.beginUpdates()

@@ -19,26 +19,25 @@ class AddBillViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var withWhoSplitTableView: UITableView!
     @IBOutlet weak var saveNewBillButton: UIBarButtonItem!
     @IBOutlet weak var errorLabel: UILabel!
-    let database = Firestore.firestore()
-    var billRef: DocumentReference!
+    var billManager: BillManager!
     var groupInfo: Group!
     var debtorList: [GroupMember] = []
     var whoPaidArray: [GroupMember] = []
     var existingBills: [Bill] = []
+    var whoPaidEmail: String?
 
     private var datePicker: UIDatePicker?
     private var whoPaidPicker: UIPickerView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        billRef = Firestore.firestore().collection("users").document(Auth.auth().currentUser!.uid).collection("groups").document(groupInfo!.groupName)
         moneyTexTField.keyboardType = .decimalPad
         setupDatePicker()
         setupSplitType()
         setupWhoPaidPicker()
         getExistingBills()
         saveNewBillButton.target = self
-        saveNewBillButton.action = #selector(saveBill)
+        saveNewBillButton.action = #selector(saveBillTapped)
         withWhoSplitTableView.delegate = self
         withWhoSplitTableView.dataSource = self
         whoPaidPicker?.delegate = self
@@ -74,29 +73,29 @@ class AddBillViewController: UIViewController, UITableViewDataSource, UITableVie
         whoPaidTextField.frame.size.height = CGFloat(exactly: 50)!
         whoPaidTextField.inputView = whoPaidPicker
         whoPaidArray = groupInfo.groupMembers
-        whoPaidArray.append(GroupMember(username: "You", email: Auth.auth().currentUser!.email!, debt: Decimal(0))!)
     }
 
-    @objc func saveBill() {
+    @objc func saveBillTapped() {
         let error = validateField()
 
         if let message = error {
             Utilities.showError(message, errorLabel)
         } else {
-            let description = descriptionTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+            let description = (descriptionTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines))!
             let money = (moneyTexTField.text?.trimmingCharacters(in: .whitespacesAndNewlines))!
-            let date = datePicker?.date
-            let whoPaid = whoPaidTextField.text
-            debtorList.append(GroupMember(username: "You", email: Auth.auth().currentUser!.email!, debt: Decimal(0))!)
-            let newBill = Bill(description: description!, money: Decimal(string: money)!, date: date!, whoPaid: whoPaid!,
-                               debtorList: BillsOperations.calculateDebtForBill(whoPaid: whoPaid!,
-                                                                                money: Decimal(string: money)!, debtors: debtorList))
+            let date = (datePicker?.date)!
 
-            do {
-                try billRef.collection("bills").document(newBill!.description).setData(from: newBill)
-            } catch let error {
-                Utilities.showError(NSLocalizedString("billSavingDataError", comment: "Error during saving new bill data"), self.errorLabel)
-                NSLog("New bill saving data error \(error)")
+            let newBill = Bill(description: description,
+                               money: Decimal(string: money)!,
+                               date: date,
+                               whoPaid: whoPaidEmail!,
+                               debtorList: BillsOperations.calculateDebtForBill(whoPaid: whoPaidEmail!,
+                                                                                money: Decimal(string: money)!,
+                                                                                debtors: debtorList))
+            billManager.addBill(newBill: newBill!) { (error) in
+                if error != nil {
+                    Utilities.showError(NSLocalizedString("billSavingDataError", comment: "Error during saving new bill data"), self.errorLabel)
+                }
             }
             self.navigationController?.popViewController(animated: true)
         }
@@ -119,16 +118,11 @@ class AddBillViewController: UIViewController, UITableViewDataSource, UITableVie
     }
 
     private func getExistingBills() {
-        billRef.collection("bills").getDocuments { (querySnapshot, error) in
-           if let error = error {
-               NSLog("Error getting bills list: \(error)")
-           } else {
-            self.existingBills = []
-               for document in querySnapshot!.documents {
-                   self.existingBills.append(Bill(data: document.data())!)
-               }
-           }
-       }
+        billManager.getBills { (existingBills, error) in
+            if error == nil {
+                self.existingBills = existingBills
+            }
+        }
    }
 
     // MARK: - Table view data source
@@ -172,5 +166,6 @@ class AddBillViewController: UIViewController, UITableViewDataSource, UITableVie
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         whoPaidTextField.text = whoPaidArray[row].username
+        whoPaidEmail = whoPaidArray[row].email
     }
 }

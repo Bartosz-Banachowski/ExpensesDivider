@@ -16,18 +16,16 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var billsListTableView: UITableView!
     @IBOutlet weak var editGroupButton: CustomButton!
 
-    let database = Firestore.firestore()
-    var billRef: CollectionReference!
-    var billListener: ListenerRegistration?
     var groupInfo: Group!
+    var billManager: BillManager!
+    var userManager: UserManager!
     var billsList: [Bill] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        billRef = Firestore.firestore().collection("users").document(Auth.auth().currentUser!.uid).collection("groups")
-            .document(groupInfo!.groupName).collection("bills")
         billsListTableView.delegate = self
         billsListTableView.dataSource = self
+        billManager = BillManager(UUID: groupInfo.UUID!)
         setupGroupView()
     }
 
@@ -43,10 +41,12 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if segue.destination is AddBillViewController {
             let billVC = segue.destination as? AddBillViewController
             billVC?.groupInfo = self.groupInfo
+            billVC?.billManager = self.billManager
         }
         if segue.destination is DetailedBillInfoViewController {
             let billVC = segue.destination as? DetailedBillInfoViewController
             billVC?.groupInfo = self.groupInfo
+            billVC?.billManager = self.billManager
             if let index = self.billsListTableView.indexPathForSelectedRow {
                 billVC?.billInfo = billsList[index.row]
             }
@@ -54,23 +54,21 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     func startListeningForBill() {
-        billListener = billRef.addSnapshotListener { (querySnapshot, error) in
-            if let error = error {
-                NSLog("Error getting bills list: \(error)")
+        billManager.getBillListener { (billList, error) in
+            if error != nil {
+                let errorAlert = AlertService.getErrorPopup(title: NSLocalizedString("ErrorTitle", comment: "error"),
+                                                            body: NSLocalizedString("ErrorBody", comment: "Error"))
+                self.present(errorAlert, animated: true, completion: nil)
             } else {
-                self.billsList = []
-                for document in querySnapshot!.documents {
-                    self.billsList.append(Bill(data: document.data())!)
-                }
+                self.billsList = billList
+                self.billsListTableView.reloadData()
+                self.setupBalance()
             }
-            self.billsListTableView.reloadData()
-            self.setupBalance()
         }
    }
 
    func stopListeningForBill() {
-       billListener?.remove()
-       billListener = nil
+        billManager.removeBillListener()
    }
 
     func setupGroupView() {
@@ -78,17 +76,20 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     func setupBalance() {
-        let summaryLabel = BillsOperations.getMyBalance(bills: billsList)
+        let summaryLabel = BillsOperations.getMyBalance(bills: billsList, user: userManager.loggedUserEmail)
         balanceLabel.text = summaryLabel.text
         balanceLabel.textColor = summaryLabel.textColor
     }
 
     func deleteBillFromDB(whichBill index: Int) {
         let documentID = billsList[index].description
-        database.collection("users").document((Auth.auth().currentUser?.uid)!)
-            .collection("groups").document(groupInfo.groupName)
-            .collection("bills").document(documentID).delete()
-        NSLog("Succesfuly delete bill from the list - \(documentID)")
+        billManager.deleteBill(which: documentID) { (error) in
+            if error != nil {
+                let errorAlert = AlertService.getErrorPopup(title: NSLocalizedString("ErrorTitle", comment: "error"),
+                                                            body: NSLocalizedString("ErrorBody", comment: "error"))
+                self.present(errorAlert, animated: true, completion: nil)
+            }
+        }
     }
 
     // MARK: - Group Table View data source
@@ -106,7 +107,7 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // swiftlint:enable force_cast
 
         let bill = billsList[indexPath.row]
-        cell.setBill(bill: bill)
+        cell.setBill(bill: bill, user: userManager.loggedUserEmail)
         return cell
     }
 

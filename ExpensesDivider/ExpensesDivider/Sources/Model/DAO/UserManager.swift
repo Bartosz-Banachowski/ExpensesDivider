@@ -9,7 +9,27 @@
 import UIKit
 import Firebase
 
-class UserManager: NSObject {
+class UserManager {
 
-    let currentLoggedUserID: String = Auth.auth().currentUser!.uid
+    let loggedUserID: String = Auth.auth().currentUser!.uid
+    let loggedUserEmail: String = Auth.auth().currentUser!.email!
+    var loggedUserUsername: String
+
+    init() {
+        loggedUserUsername = ""
+        getLoggedUserUsername()
+    }
+
+    private func getLoggedUserUsername() {
+        Firestore.firestore().collection(DbConstants.users).document(loggedUserID).getDocument { (docSnapshot, error) in
+            if let error = error {
+                NSLog("Error getting username from database: \(error)")
+                return
+            } else {
+                if let doc = docSnapshot?.data()!["username"] as? String {
+                    self.loggedUserUsername = doc
+                }
+            }
+        }
+    }
 }

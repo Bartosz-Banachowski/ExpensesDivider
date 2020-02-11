@@ -32,7 +32,7 @@ class GroupManager: NSObject {
     func getGroupsListener(completion: @escaping ([Group], Error?) -> Void) {
         var groupList = [Group]()
         groupListener = groupsRef
-            .whereField(DbConstants.accessControlList + "." + userManager.currentLoggedUserID, in: [DbConstants.admin, DbConstants.member])
+            .whereField(DbConstants.accessControlList + "." + userManager.loggedUserID, in: [DbConstants.admin, DbConstants.member])
             .addSnapshotListener { (querySnapshot, error) in
             if let error = error {
                 NSLog("Error getting group list listener: \(error)")
@@ -57,7 +57,7 @@ class GroupManager: NSObject {
 
     func getGroups(completion: @escaping ([Group], Error?) -> Void) {
         groupsRef
-            .whereField(DbConstants.accessControlList + "." + userManager.currentLoggedUserID, in: [DbConstants.admin, DbConstants.member])
+            .whereField(DbConstants.accessControlList + "." + userManager.loggedUserID, in: [DbConstants.admin, DbConstants.member])
             .getDocuments { (querySnapshot, error) in
             var existingGroups = [Group]()
             if let error = error {

@@ -15,7 +15,7 @@ class SettleUpBillViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var billMoneyTextLabel: UITextField!
     @IBOutlet weak var personToSettleUpTextLabel: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
-    var billRef: DocumentReference!
+    var billManager: BillManager!
     var groupInfo: Group!
     var billInfo: Bill!
 
@@ -23,10 +23,6 @@ class SettleUpBillViewController: UIViewController, UIPickerViewDelegate, UIPick
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        billRef = Firestore.firestore()
-            .collection("users").document(Auth.auth().currentUser!.uid)
-            .collection("groups").document(groupInfo!.groupName)
-            .collection("bills").document(billInfo.description)
         setupWhoPaidPicker()
         personToPay?.delegate = self
         personToPay?.dataSource = self
@@ -44,12 +40,10 @@ class SettleUpBillViewController: UIViewController, UIPickerViewDelegate, UIPick
                 billInfo.debtorList[index].debt -= Decimal(string: money!)!
             }
 
-            print("happy", billInfo.debtorList)
-            do {
-                try billRef.setData(from: billInfo)
-            } catch let error {
-                Utilities.showError(NSLocalizedString("billSavingDataError", comment: "Error during saving new bill data"), self.errorLabel)
-                NSLog("New bill saving data error \(error)")
+            billManager.updateBill(which: billInfo) { (error) in
+                if error != nil {
+                    Utilities.showError(NSLocalizedString("billSavingDataError", comment: "Error during saving new bill data"), self.errorLabel)
+                }
             }
             self.navigationController?.popViewController(animated: true)
         }
