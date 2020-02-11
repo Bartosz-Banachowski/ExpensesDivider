@@ -17,11 +17,13 @@ struct AccessControlList: Codable {
     var accessControlList: [String: AccessLevel]
 
     init?(data: [String: Any]) {
-        guard let accessControlList = data["AccessControlList"] as? [String: AccessLevel] else {
+        guard let accessControlList = data as? [String: AccessLevel] else {
+            print("guard")
             return nil
         }
 
         self.accessControlList = accessControlList
+        print("now", accessControlList)
     }
 
     init?(accessControlList: [String: AccessLevel]) {

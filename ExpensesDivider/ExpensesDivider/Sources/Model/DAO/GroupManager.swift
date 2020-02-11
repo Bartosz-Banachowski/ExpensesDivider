@@ -20,7 +20,7 @@ class GroupManager: NSObject {
     func addGroup(newGroup: Group, completion: @escaping(Error?) -> Void) {
         do {
             let document = try groupsRef.addDocument(from: newGroup)
-            try groupsRef.document(document.documentID).updateData(["UUID": document.documentID])
+            groupsRef.document(document.documentID).updateData(["UUID": document.documentID])
         } catch let error {
             NSLog("Error adding new group to the databse: \(error)")
             completion(error)

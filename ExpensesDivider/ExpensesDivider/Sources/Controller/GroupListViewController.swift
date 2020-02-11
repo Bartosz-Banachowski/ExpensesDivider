@@ -13,6 +13,7 @@ class GroupListViewController: UIViewController, UITableViewDelegate, UITableVie
 
     @IBOutlet weak var groupListTableView: UITableView!
     let groupManager = GroupManager()
+    let userManager = UserManager()
     var groupList: [Group] = []
 
     override func viewDidLoad() {
@@ -64,14 +65,14 @@ class GroupListViewController: UIViewController, UITableViewDelegate, UITableVie
                     self.present(errorAlert, animated: true, completion: nil)
                 }
             }
+        } else {
+            let errorAlert = AlertService.getErrorPopup(title: NSLocalizedString("ErrorTitle", comment: "error"),
+                                                        body: NSLocalizedString("ErrorBody", comment: "error"))
+            self.present(errorAlert, animated: true, completion: nil)
         }
-        let errorAlert = AlertService.getErrorPopup(title: NSLocalizedString("ErrorTitle", comment: "error"),
-                                                    body: NSLocalizedString("ErrorBody", comment: "error"))
-        self.present(errorAlert, animated: true, completion: nil)
     }
 
     // MARK: - Group Table View data source
-
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -96,11 +97,17 @@ class GroupListViewController: UIViewController, UITableViewDelegate, UITableVie
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            deleteGroupFromDB(whichGroup: indexPath.row)
-            groupList.remove(at: indexPath.row)
-            tableView.beginUpdates()
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.endUpdates()
+            if groupList[indexPath.row].accessControlList[userManager.currentLoggedUserID] == AccessLevel.admin {
+                deleteGroupFromDB(whichGroup: indexPath.row)
+                groupList.remove(at: indexPath.row)
+                tableView.beginUpdates()
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                tableView.endUpdates()
+            } else {
+                let accessErrorAlert = AlertService.getErrorPopup(title: NSLocalizedString("AccessErrorTitle", comment: "AccessError"),
+                                                                  body: NSLocalizedString("AccessErrorBody", comment: "AccessError"))
+                self.present(accessErrorAlert, animated: true, completion: nil)
+            }
         }
     }
 }

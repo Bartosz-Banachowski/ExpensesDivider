@@ -12,7 +12,7 @@ struct Group: Codable {
     var UUID: String?
     var groupName: String
     var groupMembers: [GroupMember] = []
-    var accessControlList: [String: AccessLevel]?
+    var accessControlList: [String: AccessLevel] = [:]
 
     init?(data: [String: Any]) {
         guard let groupMembers = data["groupMembers"] as? [[String: Any]],
@@ -26,7 +26,13 @@ struct Group: Codable {
         for index in 0..<groupMembers.count {
             self.groupMembers.append(GroupMember(data: groupMembers[index])!)
         }
-        self.accessControlList = AccessControlList(data: accessControlList)?.accessControlList
+        for (key, value) in accessControlList {
+            if value as? String == "admin" {
+                self.accessControlList[key] = AccessLevel.admin
+            } else if value as? String == "member" {
+                self.accessControlList[key] = AccessLevel.member
+            }
+        }
         self.UUID = UUID
     }
 
