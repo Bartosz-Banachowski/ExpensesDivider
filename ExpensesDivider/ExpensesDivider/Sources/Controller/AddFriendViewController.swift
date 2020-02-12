@@ -16,9 +16,10 @@ class AddFriendViewController: UIViewController, MFMailComposeViewControllerDele
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
 
+    let friendManager = FriendManager()
     var loggedUser: User?
     var friendsList: [Friend] = []
-    let friendManager = FriendManager()
+    var noFriendCheckbox: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,10 @@ class AddFriendViewController: UIViewController, MFMailComposeViewControllerDele
         } else {
             let username = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-            let newFriend = Friend(uuid: DbConstants.defaultUserUUID, username: username!, email: email!, debt: Decimal(0), isAccepted: true)
+            let newFriend = Friend(uuid: DbConstants.defaultUserUUID,
+                                   username: username!,
+                                   email: email!,
+                                   invitationStatus: .accepted)
 
             friendManager.addFriend(newFriend: newFriend!) { (error) in
                 if error != nil {
@@ -43,6 +47,20 @@ class AddFriendViewController: UIViewController, MFMailComposeViewControllerDele
             }
             self.navigationController?.popViewController(animated: true)
         }
+    }
+
+    @IBAction func noFriendCheckboxTapped(_ sender: UIButton) {
+        
+        UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveLinear, animations: {
+            sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        }, completion: { _ in
+            sender.isSelected = !sender.isSelected
+            self.noFriendCheckbox = sender.isSelected
+            print(self.noFriendCheckbox)
+            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
+                sender.transform = .identity
+            }, completion: nil)
+        })
     }
 
     func validateField() -> String? {

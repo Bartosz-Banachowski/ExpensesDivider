@@ -29,7 +29,7 @@ class AddNewGroupMemberViewController: UIViewController, UITableViewDataSource, 
         friendListTableView.dataSource = self
         saveButton.target = self
         saveButton.action = #selector(saveMembersTapped)
-        getAllFriendList()
+        getAllAcceptedFriends()
     }
 
     @objc func saveMembersTapped() {
@@ -41,14 +41,16 @@ class AddNewGroupMemberViewController: UIViewController, UITableViewDataSource, 
         delegate?.addMembers(members: pickedMemberList)
     }
 
-    func getAllFriendList() {
+    func getAllAcceptedFriends() {
         friendManager.getFriends { (friendList, error) in
             if error != nil {
                 let errorAlert = AlertService.getErrorPopup(title: NSLocalizedString("ErrorTitle", comment: "error"),
                                                             body: NSLocalizedString("ErrorBody", comment: "Error"))
                 self.present(errorAlert, animated: true, completion: nil)
             } else {
-                self.friendList = friendList
+                for friend in friendList where friend.invitationStatus == .accepted {
+                    self.friendList.append(friend)
+                }
                 self.friendListTableView.reloadData()
             }
         }

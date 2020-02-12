@@ -18,7 +18,7 @@ struct DbConstants {
 //fields name
     static let emailField = "email"
     static let accessControlList = "accessControlList"
-    static let isAcceptedField = "isAccepted"
+    static let invitationStatusField = "invitationStatus"
 
 //constants strings
     static let defaultUserUUID = ""

@@ -12,13 +12,13 @@ import Firebase
 class FriendManager: NSObject {
 
     var friendListener: ListenerRegistration?
-    let database = Firestore.firestore()
     let friendsRef = Firestore.firestore()
         .collection(DbConstants.users)
         .document(Auth.auth().currentUser!.uid)
         .collection(DbConstants.friends)
     let usersRef = Firestore.firestore()
         .collection(DbConstants.users)
+    let userManager = UserManager()
 
     // MARK: - CRUD Friend
     func addFriend(newFriend: Friend, completion: @escaping (Error?) -> Void) {
@@ -33,6 +33,7 @@ class FriendManager: NSObject {
             for doc in querySnapshot!.documents {
                 // swiftlint:disable force_cast
                 friend.UUID = doc.data()["uid"] as! String
+                friend.invitationStatus = .pending
                 // swiftlint:enable force_cast
             }
 
@@ -41,15 +42,13 @@ class FriendManager: NSObject {
                     if let error = error {
                         NSLog("Error during getting user information: \(error)")
                     } else {
-                        var currentUserAsFriend = Friend(uuid: document?.data()!["uid"] as? String ?? loggedUser.uid,
+                        let currentUserAsFriend = Friend(uuid: document?.data()!["uid"] as? String ?? loggedUser.uid,
                                                          username: document?.data()!["username"] as? String ?? "",
                                                          email: document?.data()!["email"] as? String ?? loggedUser.email!,
-                                                         debt: Decimal(0),
-                                                         isAccepted: true)!
+                                                         invitationStatus: .checking)!
                         do {
                             try self.friendsRef.document(friend.email).setData(from: friend)
                             if friend.UUID != "" {
-                                currentUserAsFriend.isAccepted = false
                                 try self.usersRef.document(friend.UUID)
                                     .collection(DbConstants.friends)
                                     .document(currentUserAsFriend.email)
@@ -106,22 +105,68 @@ class FriendManager: NSObject {
         NSLog("Succesfuly get all friends list")
     }
 
-    func deleteFriend(who friendID: String, completion: @escaping(Error?) -> Void) {
+    func declineInvtitation(who friendID: String, completion: @escaping(Error?) -> Void) {
         friendsRef.document(friendID).delete { (error) in
             if let error = error {
                 NSLog("Error deleting friend from the list: \(error)")
                 completion(error)
             }
         }
+        usersRef.whereField(DbConstants.emailField, isEqualTo: friendID).getDocuments { (querySnapshot, error) in
+            if let error = error {
+                NSLog("Error deleting friend from the list: \(error)")
+                completion(error)
+            } else {
+                var UUID: String?
+                for doc in querySnapshot!.documents {
+                    UUID = doc.data()["uid"] as? String
+                }
+                if let UUID = UUID {
+                    self.usersRef
+                        .document(UUID)
+                        .collection(DbConstants.friends)
+                        .document(self.userManager.loggedUserEmail)
+                        .delete { (error) in
+                            if let error = error {
+                                NSLog("Error deleting friend from the list: \(error)")
+                                completion(error)
+                            }
+                    }
+                }
+            }
+        }
         NSLog("Succesfuly delete friend from the list - \(friendID)")
         completion(nil)
     }
 
-    func activateFriend(who friendID: String, completion: @escaping(Error?) -> Void) {
-        friendsRef.document(friendID).updateData([DbConstants.isAcceptedField: true]) { (error) in
+    func acceptInvitation(who friendID: String, completion: @escaping(Error?) -> Void) {
+        friendsRef.document(friendID).updateData([DbConstants.invitationStatusField: InvitationStatus.accepted.rawValue]) { (error) in
             if let error = error {
                 NSLog("Error during activation of the friend: \(error)")
                 completion(error)
+            }
+        }
+        usersRef.whereField(DbConstants.emailField, isEqualTo: friendID).getDocuments { (querySnapshot, error) in
+            if let error = error {
+                NSLog("Error during activation of the friend: \(error)")
+                completion(error)
+            } else {
+                var UUID: String?
+                for doc in querySnapshot!.documents {
+                    UUID = doc.data()["uid"] as? String
+                }
+                if let UUID = UUID {
+                    self.usersRef
+                        .document(UUID)
+                        .collection(DbConstants.friends)
+                        .document(self.userManager.loggedUserEmail)
+                        .updateData([DbConstants.invitationStatusField: InvitationStatus.accepted.rawValue]) { (error) in
+                            if let error = error {
+                                NSLog("Error during activation of the friend: \(error)")
+                                completion(error)
+                            }
+                    }
+                }
             }
         }
         NSLog("Succesfuly activate friend from the list - \(friendID)")

@@ -33,7 +33,7 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
 
     func deleteFriendFromDB(whichFriend index: Int) {
         let documentID = friendList[index].email
-        friendManager.deleteFriend(who: documentID) { (error) in
+        friendManager.declineInvtitation(who: documentID) { (error) in
             if error != nil {
                 let errorAlert = AlertService.getErrorPopup(title: NSLocalizedString("ErrorTitle", comment: "error"),
                                                             body: NSLocalizedString("ErrorBody", comment: "error"))
@@ -44,7 +44,7 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
 
     func updateFriendInDB(whichFriend index: Int) {
         let documentID = friendList[index].email
-        friendManager.activateFriend(who: documentID) { (error) in
+        friendManager.acceptInvitation(who: documentID) { (error) in
             if error != nil {
                 let errorAlert = AlertService.getErrorPopup(title: NSLocalizedString("ErrorTitle", comment: "error"),
                                                             body: NSLocalizedString("ErrorBody", comment: "error"))
@@ -57,7 +57,7 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
         var friendList = list
         var invitationAlert: UIAlertController?
         let index = friendList.firstIndex { (friend) -> Bool in
-            friend.isAccepted == false
+            friend.invitationStatus == InvitationStatus.checking
         }
 
         if let index = index {
@@ -65,7 +65,6 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
                                                          body: NSLocalizedString("InvitationBody", comment: "Friend invitation")
                                                             + friendList[index].email,
                                                          completionYes: {
-                                                            friendList[index].isAccepted = true
                                                             self.updateFriendInDB(whichFriend: index)
             }, completionNo: {
                 self.deleteFriendFromDB(whichFriend: index)
