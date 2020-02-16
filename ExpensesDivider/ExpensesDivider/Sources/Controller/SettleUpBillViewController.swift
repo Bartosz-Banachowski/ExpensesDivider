@@ -13,9 +13,11 @@ class SettleUpBillViewController: UIViewController, UIPickerViewDelegate, UIPick
 
     @IBOutlet weak var billNameLabel: UILabel!
     @IBOutlet weak var billMoneyTextLabel: UITextField!
+    @IBOutlet weak var currentDebtLabel: UILabel!
     @IBOutlet weak var personToSettleUpTextLabel: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     var billManager: BillManager!
+    var userManager: UserManager!
     var groupInfo: Group!
     var billInfo: Bill!
 
@@ -24,8 +26,19 @@ class SettleUpBillViewController: UIViewController, UIPickerViewDelegate, UIPick
     override func viewDidLoad() {
         super.viewDidLoad()
         setupWhoPaidPicker()
+        setupView()
         personToPay?.delegate = self
         personToPay?.dataSource = self
+    }
+
+    func setupView() {
+        billNameLabel.text = billInfo.description
+        if let debt = billInfo.debtorList.first(where: { debtor -> Bool in
+            debtor.email == userManager.loggedUserEmail
+        })?.debt {
+            currentDebtLabel.textColor = .darkGray
+            currentDebtLabel.text = Utilities.currencyFormatter(currency: debt)
+        }
     }
 
     @IBAction func settleUpTapped(_ sender: Any) {
@@ -36,9 +49,7 @@ class SettleUpBillViewController: UIViewController, UIPickerViewDelegate, UIPick
         } else {
             let debtorToPay = personToSettleUpTextLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines)
             let money = billMoneyTextLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-            for index in 0..<billInfo.debtorList.count where billInfo.debtorList[index].username == debtorToPay {
-                billInfo.debtorList[index].debt -= Decimal(string: money!)!
-            }
+            setupBillInfo(money: money!, debtorToPay: debtorToPay!)
 
             billManager.updateBill(which: billInfo) { (error) in
                 if error != nil {
@@ -55,6 +66,23 @@ class SettleUpBillViewController: UIViewController, UIPickerViewDelegate, UIPick
             personToSettleUpTextLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "choose person to settle up" {
                 return NSLocalizedString("emptyFieldsError", comment: "Empty fields error")
         }
+        if let dotValidation = billMoneyTextLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines) {
+            var dotCount = 0
+            for dot in dotValidation where dot.isPunctuation == true {
+                dotCount += 1
+            }
+            if dotCount > 1 {
+                return NSLocalizedString("TooMuchDotsInMoneyFieldError", comment: "There should be only 1 dot")
+            }
+        }
+        if let charValidation = billMoneyTextLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines) {
+            let charFlag = charValidation.contains(where: { (character) -> Bool in
+                character.isLetter
+            })
+            if charFlag == true {
+                return NSLocalizedString("MoneyFieldError", comment: "There should be only numbers")
+            }
+        }
         return nil
     }
 
@@ -69,6 +97,15 @@ class SettleUpBillViewController: UIViewController, UIPickerViewDelegate, UIPick
         personToPay = UIPickerView()
         personToSettleUpTextLabel.frame.size.height = CGFloat(exactly: 50)!
         personToSettleUpTextLabel.inputView = personToPay
+    }
+
+    private func setupBillInfo(money: String, debtorToPay: String) {
+        for index in 0..<billInfo.debtorList.count where billInfo.debtorList[index].email == billInfo.whoPaid {
+            billInfo.debtorList[index].debt += Decimal(string: money)!
+        }
+        for index in 0..<billInfo.debtorList.count where billInfo.debtorList[index].username == debtorToPay {
+            billInfo.debtorList[index].debt -= Decimal(string: money)!
+        }
     }
 
     // MARK: - Picker view data source

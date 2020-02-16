@@ -15,6 +15,7 @@ class DetailedBillInfoViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet weak var billDateLabel: UILabel!
     @IBOutlet weak var billMoney: UILabel!
     @IBOutlet weak var splitDetailsTableView: UITableView!
+    var userManager: UserManager!
     var billManager: BillManager!
 
     var splitDetailsBills: [Group] = []
@@ -56,7 +57,7 @@ class DetailedBillInfoViewController: UIViewController, UITableViewDataSource, U
     }
 
     func setupView() {
-        billNameLabel.text = groupInfo.groupName
+        billNameLabel.text = billInfo.description
         billDateLabel.text = "Bill's date: \(Utilities.dateFormatter(date: billInfo.date))"
         billMoney.text = Utilities.currencyFormatter(currency: billInfo.money)
     }
@@ -67,6 +68,7 @@ class DetailedBillInfoViewController: UIViewController, UITableViewDataSource, U
             billVC?.groupInfo = self.groupInfo
             billVC?.billInfo = self.billInfo
             billVC?.billManager = self.billManager
+            billVC?.userManager = self.userManager
         }
     }
 
@@ -81,15 +83,24 @@ class DetailedBillInfoViewController: UIViewController, UITableViewDataSource, U
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "billDetailsItem", for: indexPath)
-        cell.textLabel?.text = detailedBill.debtorList[indexPath.row].username
-        cell.detailTextLabel?.text = Utilities.currencyFormatter(currency: detailedBill.debtorList[indexPath.row].debt)
-        if cell.detailTextLabel?.text == "0,00 zl" {
+        let debtor = detailedBill.debtorList[indexPath.row]
+        cell.textLabel?.text = debtor.username
+        cell.detailTextLabel?.textColor = .systemRed
+        cell.detailTextLabel?.text = Utilities.currencyFormatter(currency: debtor.debt)
+        if cell.detailTextLabel?.text == DbConstants.noDebtStatus || debtor.email == billInfo.whoPaid {
             cell.detailTextLabel?.textColor = .systemGreen
+        }
+        if debtor.email == userManager.loggedUserEmail {
+            cell.backgroundColor = .lightGray
         }
         return cell
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Split details - Paid by: \(billInfo.whoPaid)"
+        var whoPaidUsername: String = billInfo.whoPaid
+        for debtor in billInfo.debtorList where debtor.email == billInfo.whoPaid {
+            whoPaidUsername = debtor.username
+        }
+        return "Details - Paid by:   \(whoPaidUsername)"
     }
 }

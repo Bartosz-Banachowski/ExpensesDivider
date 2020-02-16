@@ -54,7 +54,7 @@ class FriendListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
 
     func checkInvitations(list: [Friend], completion: @escaping ([Friend]) -> Void) {
-        var friendList = list
+        let friendList = list
         var invitationAlert: UIAlertController?
         let index = friendList.firstIndex { (friend) -> Bool in
             friend.invitationStatus == InvitationStatus.checking

@@ -38,14 +38,14 @@ struct BillsOperations {
         var balance: Decimal = 0
         var moneyBorrowed: Decimal = 0
         var moneyOwed: Decimal = 0
-//TODO BALANCE
+//TO:DO BALANCE
         for bill in bills {
             if bill.whoPaid == user {
-                for debtor in bill.debtorList where debtor.username != user {
+                for debtor in bill.debtorList where debtor.email != user {
                     moneyBorrowed += debtor.debt
                 }
             } else {
-                for debtor in bill.debtorList where debtor.username == user {
+                for debtor in bill.debtorList where debtor.email == user {
                     moneyOwed += debtor.debt
                 }
             }

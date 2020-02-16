@@ -19,7 +19,6 @@ class AddFriendViewController: UIViewController, MFMailComposeViewControllerDele
     let friendManager = FriendManager()
     var loggedUser: User?
     var friendsList: [Friend] = []
-    var noFriendCheckbox: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,20 +48,6 @@ class AddFriendViewController: UIViewController, MFMailComposeViewControllerDele
         }
     }
 
-    @IBAction func noFriendCheckboxTapped(_ sender: UIButton) {
-        
-        UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveLinear, animations: {
-            sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-        }, completion: { _ in
-            sender.isSelected = !sender.isSelected
-            self.noFriendCheckbox = sender.isSelected
-            print(self.noFriendCheckbox)
-            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
-                sender.transform = .identity
-            }, completion: nil)
-        })
-    }
-
     func validateField() -> String? {
         //check all field are full in
         let trimmedUsername = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -90,6 +75,25 @@ class AddFriendViewController: UIViewController, MFMailComposeViewControllerDele
                 self.friendsList.append(contentsOf: friendsList)
             }
         }
+    }
+
+    
+    
+    
+    
+    var noFriendCheckbox: Bool = false
+
+    @IBAction func noFriendCheckboxTapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveLinear, animations: {
+            sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        }, completion: { _ in
+            sender.isSelected = !sender.isSelected
+            self.noFriendCheckbox = sender.isSelected
+            print(self.noFriendCheckbox)
+            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
+                sender.transform = .identity
+            }, completion: nil)
+        })
     }
 
     func sendEmail(_ recipient: String) {

@@ -22,6 +22,7 @@ struct DbConstants {
 
 //constants strings
     static let defaultUserUUID = ""
+    static let noDebtStatus  = "0,00 zl"
     static let admin = "admin"
     static let member = "member"
 }

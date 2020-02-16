@@ -19,6 +19,8 @@
 "billSavingDataError" = "Wystąpił błąd podczas zapisywania danych rachunku";
 "sameNameofBills" = "Nie można utworzyć dwóch rachunków z taką samą nazwą";
 "sameEmailsOfFriends" = "Nie można utworzyć dwóch znajomych z takim samym adresem e-mail";
+"TooMuchDotsInMoneyFieldError" = "Pole zawierające wielkość rachunku nie może zawierać więcej niż jednej kropki";
+"MoneyFieldError" = "Proszę o poprawne wprowadzenie rozmiaru rachunku";
 
 //dialog strings
 "InvitationTitle" = "Oczekujące zaproszenia";

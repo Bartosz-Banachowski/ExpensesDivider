@@ -21,6 +21,7 @@ class AddNewGroupMemberViewController: UIViewController, UITableViewDataSource, 
     var friendManager = FriendManager()
     var friendList: [Friend] = []
     var pickedMemberList: [Friend]!
+    var alreadyAddedFriends: [Friend]!
     var selectedCells: [Int] = []
 
     override func viewDidLoad() {
@@ -48,7 +49,7 @@ class AddNewGroupMemberViewController: UIViewController, UITableViewDataSource, 
                                                             body: NSLocalizedString("ErrorBody", comment: "Error"))
                 self.present(errorAlert, animated: true, completion: nil)
             } else {
-                for friend in friendList where friend.invitationStatus == .accepted {
+                for friend in friendList where friend.invitationStatus == .accepted && !self.alreadyAddedFriends.contains(friend) {
                     self.friendList.append(friend)
                 }
                 self.friendListTableView.reloadData()
@@ -56,6 +57,7 @@ class AddNewGroupMemberViewController: UIViewController, UITableViewDataSource, 
         }
     }
 
+    // MARK: - Table view data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friendList.count
     }

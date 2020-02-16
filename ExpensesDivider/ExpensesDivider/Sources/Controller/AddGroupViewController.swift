@@ -29,9 +29,10 @@ class AddGroupViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     @IBAction func addNewMembersTapped(_ sender: Any) {
-        let newGroupMembersVC = UIStoryboard(name: "Home", bundle: nil)
-            .instantiateViewController(withIdentifier: "AddNewGroupMemberVC") as? AddNewGroupMemberViewController
+        let newGroupMembersVC = UIStoryboard(name: Constants.Storyboard.homeStoryboard, bundle: nil)
+            .instantiateViewController(withIdentifier: Constants.Storyboard.AddNewGroupMemberVC) as? AddNewGroupMemberViewController
         newGroupMembersVC?.delegate = self
+        newGroupMembersVC?.alreadyAddedFriends = friendList
         self.present(UINavigationController(rootViewController: newGroupMembersVC!), animated: true, completion: nil)
     }
 

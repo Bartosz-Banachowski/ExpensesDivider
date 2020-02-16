@@ -88,7 +88,7 @@ class GroupListViewController: UIViewController, UITableViewDelegate, UITableVie
         // swiftlint:enable force_cast
 
         let group = groupList[indexPath.row]
-        cell.setGroup(group: group)
+        cell.setGroup(group: group, user: userManager.loggedUserID)
         return cell
     }
 

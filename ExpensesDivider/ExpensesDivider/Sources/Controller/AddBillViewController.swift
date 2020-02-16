@@ -51,6 +51,7 @@ class AddBillViewController: UIViewController, UITableViewDataSource, UITableVie
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
+        tapGesture.cancelsTouchesInView = false
         dateTextField.inputView = datePicker
     }
 
@@ -111,6 +112,25 @@ class AddBillViewController: UIViewController, UITableViewDataSource, UITableVie
             return NSLocalizedString("emptyFieldsError", comment: "Empty fields error")
         }
 
+        if let dotValidation = moneyTexTField.text?.trimmingCharacters(in: .whitespacesAndNewlines) {
+            var dotCount = 0
+            for dot in dotValidation where dot.isPunctuation == true {
+                dotCount += 1
+            }
+            if dotCount > 1 {
+                return NSLocalizedString("TooMuchDotsInMoneyFieldError", comment: "There should be only 1 dot")
+            }
+        }
+
+        if let charValidation = moneyTexTField.text?.trimmingCharacters(in: .whitespacesAndNewlines) {
+            let charFlag = charValidation.contains(where: { (character) -> Bool in
+                character.isLetter
+            })
+            if charFlag == true {
+                return NSLocalizedString("MoneyFieldError", comment: "There should be only numbers")
+            }
+        }
+
         for bill in existingBills where bill.description == descriptionTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) {
             return NSLocalizedString("sameNameofGroups", comment: "Same bill's name")
         }
@@ -126,17 +146,15 @@ class AddBillViewController: UIViewController, UITableViewDataSource, UITableVie
    }
 
     // MARK: - Table view data source
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groupInfo.groupMembers.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WhoPaidItem", for: indexPath)
-        cell.textLabel?.text = groupInfo.groupMembers[indexPath.row].username
+        let member = groupInfo.groupMembers[indexPath.row]
+        cell.textLabel?.textAlignment = .center
+        cell.textLabel?.text = member.username
         return cell
     }
 

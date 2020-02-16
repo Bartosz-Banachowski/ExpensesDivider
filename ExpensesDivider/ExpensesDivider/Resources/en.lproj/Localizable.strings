@@ -19,6 +19,8 @@
 "billSavingDataError" = "Error occurred during the bill data saving";
 "sameNameofBills" = "There cannot be two bills with the same name";
 "sameEmailsOfFriends" = "There cannot be two friends with the same email";
+"TooMuchDotsInMoneyFieldError" = "There cannot be more than 1 dot in money field";
+"MoneyFieldError" = "Please enter the correct bill size";
 
 //dialogs strings
 "InvitationTitle" = "Pending invitations";
@@ -27,3 +29,4 @@
 "ErrorBody" = "There was a problem during executing the operation";
 "AccessErrorTitle" = "Access Error";
 "AccessErrorBody" = "Only admin of the group have posibility to delete";
+

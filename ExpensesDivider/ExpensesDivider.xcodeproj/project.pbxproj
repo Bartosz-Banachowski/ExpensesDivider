@@ -28,6 +28,7 @@
 		2792D66723CD80BD003FAD3B /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2792D66623CD80BD003FAD3B /* FriendCell.swift */; };
 		279BD9EF232A4AAF00F1379F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279BD9EE232A4AAF00F1379F /* HomeViewController.swift */; };
 		27A4D7C923EABB4900BDC2C6 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A4D7C823EABB4900BDC2C6 /* AlertService.swift */; };
+		27AC7B5A23F55DDE00171A84 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AC7B5923F55DDE00171A84 /* CustomTextField.swift */; };
 		27B2FF5D23ED75E90068A691 /* AccessControlList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B2FF5C23ED75E90068A691 /* AccessControlList.swift */; };
 		27B2FF5F23ED80A60068A691 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B2FF5E23ED80A60068A691 /* UserManager.swift */; };
 		27B2FF6123ED95E40068A691 /* GroupMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B2FF6023ED95E40068A691 /* GroupMember.swift */; };
@@ -78,6 +79,7 @@
 		27931BA922E0F61400975E5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		279BD9EE232A4AAF00F1379F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		27A4D7C823EABB4900BDC2C6 /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
+		27AC7B5923F55DDE00171A84 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		27B2FF5C23ED75E90068A691 /* AccessControlList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessControlList.swift; sourceTree = "<group>"; };
 		27B2FF5E23ED80A60068A691 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		27B2FF6023ED95E40068A691 /* GroupMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMember.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				274D7B5722E5A5A200AAB5DD /* Storyboards */,
 				27C79DB623963B2D00EA6FC4 /* CustomButton.swift */,
 				2758DE1723A8FF840079333E /* CustomLabel.swift */,
+				27AC7B5923F55DDE00171A84 /* CustomTextField.swift */,
 				2792D66623CD80BD003FAD3B /* FriendCell.swift */,
 				278129B523CE26CA00921696 /* GroupCell.swift */,
 				275F549B23D56967000B08BE /* BillCell.swift */,
@@ -460,6 +463,7 @@
 				27B5290A23EC000100A76A93 /* GroupManager.swift in Sources */,
 				2758DE1823A8FF840079333E /* CustomLabel.swift in Sources */,
 				27C6DCEB23CEF24A0060D024 /* AddNewGroupMemberViewController.swift in Sources */,
+				27AC7B5A23F55DDE00171A84 /* CustomTextField.swift in Sources */,
 				27FC019123D25E30007C8316 /* AddBillViewController.swift in Sources */,
 				27B2FF5F23ED80A60068A691 /* UserManager.swift in Sources */,
 				27C79DBA23964B2A00EA6FC4 /* AddFriendViewController.swift in Sources */,

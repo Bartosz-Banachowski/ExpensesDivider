@@ -47,6 +47,7 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let billVC = segue.destination as? DetailedBillInfoViewController
             billVC?.groupInfo = self.groupInfo
             billVC?.billManager = self.billManager
+            billVC?.userManager = self.userManager
             if let index = self.billsListTableView.indexPathForSelectedRow {
                 billVC?.billInfo = billsList[index.row]
             }
