@@ -70,6 +70,12 @@ class DetailedBillInfoViewController: UIViewController, UITableViewDataSource, U
             billVC?.billManager = self.billManager
             billVC?.userManager = self.userManager
         }
+        if segue.destination is NotificationCenterViewController {
+            let notifyDebtor = segue.destination as? NotificationCenterViewController
+            notifyDebtor?.debtorList = self.billInfo.debtorList
+            notifyDebtor?.groupInfo = self.groupInfo
+            notifyDebtor?.billInfo = self.billInfo
+        }
     }
 
     // MARK: - Table view data source

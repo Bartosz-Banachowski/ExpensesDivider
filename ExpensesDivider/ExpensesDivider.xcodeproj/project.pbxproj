@@ -10,6 +10,8 @@
 		169E90A697DB12F3459799AE /* Pods_ExpensesDivider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA11538B8D1C6C38FDE1355E /* Pods_ExpensesDivider.framework */; };
 		2709CE7C23F1522100D81F04 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2709CE7B23F1522100D81F04 /* GTMSessionFetcher.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		270FF3A5238FBBE900ECA7F1 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270FF3A4238FBBE900ECA7F1 /* FriendListViewController.swift */; };
+		271EB2E523FAA72D00F74DF1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271EB2E423FAA72D00F74DF1 /* NotificationManager.swift */; };
+		271EB2E723FAD1FF00F74DF1 /* NotificationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271EB2E623FAD1FF00F74DF1 /* NotificationToken.swift */; };
 		27255AA823CB9D8900EFDAE3 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27255AA723CB9D8900EFDAE3 /* Friend.swift */; };
 		27255AAA23CB9FC300EFDAE3 /* NewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27255AA923CB9FC300EFDAE3 /* NewUser.swift */; };
 		27397B4D23352B3B0092EA9F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27397B4C23352B3B0092EA9F /* Utilities.swift */; };
@@ -51,11 +53,15 @@
 		27FC018D23D24251007C8316 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FC018C23D24251007C8316 /* GroupViewController.swift */; };
 		27FC018F23D24F57007C8316 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FC018E23D24F57007C8316 /* AddGroupViewController.swift */; };
 		27FC019123D25E30007C8316 /* AddBillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FC019023D25E30007C8316 /* AddBillViewController.swift */; };
+		27FC1ABC23F9C13900A8C4AD /* NotificationCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FC1ABB23F9C13900A8C4AD /* NotificationCenterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2709CE7B23F1522100D81F04 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		270FF3A4238FBBE900ECA7F1 /* FriendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewController.swift; sourceTree = "<group>"; };
+		271EB2E323FAA1BC00F74DF1 /* ExpensesDivider.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExpensesDivider.entitlements; sourceTree = "<group>"; };
+		271EB2E423FAA72D00F74DF1 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		271EB2E623FAD1FF00F74DF1 /* NotificationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationToken.swift; sourceTree = "<group>"; };
 		27255AA723CB9D8900EFDAE3 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		27255AA923CB9FC300EFDAE3 /* NewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUser.swift; sourceTree = "<group>"; };
 		27397B492334EE9B0092EA9F /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Login.strings; sourceTree = "<group>"; };
@@ -102,6 +108,7 @@
 		27FC018C23D24251007C8316 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		27FC018E23D24F57007C8316 /* AddGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		27FC019023D25E30007C8316 /* AddBillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBillViewController.swift; sourceTree = "<group>"; };
+		27FC1ABB23F9C13900A8C4AD /* NotificationCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterViewController.swift; sourceTree = "<group>"; };
 		7D309616F3F6D9F31FE45948 /* Pods-ExpensesDivider.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpensesDivider.release.xcconfig"; path = "Target Support Files/Pods-ExpensesDivider/Pods-ExpensesDivider.release.xcconfig"; sourceTree = "<group>"; };
 		B133453D89F474322AA69723 /* Pods-ExpensesDivider.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpensesDivider.debug.xcconfig"; path = "Target Support Files/Pods-ExpensesDivider/Pods-ExpensesDivider.debug.xcconfig"; sourceTree = "<group>"; };
 		CA11538B8D1C6C38FDE1355E /* Pods_ExpensesDivider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpensesDivider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +172,7 @@
 				27FC019023D25E30007C8316 /* AddBillViewController.swift */,
 				27EB020423D6D34B003E249B /* DetailedBillInfoViewController.swift */,
 				27C4122E23D7336700012915 /* SettleUpBillViewController.swift */,
+				27FC1ABB23F9C13900A8C4AD /* NotificationCenterViewController.swift */,
 			);
 			name = BillViewController;
 			sourceTree = "<group>";
@@ -176,6 +184,7 @@
 				27B5290923EC000100A76A93 /* GroupManager.swift */,
 				27B2FF5E23ED80A60068A691 /* UserManager.swift */,
 				27EB363623F287020098B730 /* BillManager.swift */,
+				271EB2E423FAA72D00F74DF1 /* NotificationManager.swift */,
 			);
 			path = DAO;
 			sourceTree = "<group>";
@@ -210,6 +219,7 @@
 				27C4C90123E5D3EA005C05F4 /* DbConstants.swift */,
 				27B2FF5C23ED75E90068A691 /* AccessControlList.swift */,
 				27B2FF6023ED95E40068A691 /* GroupMember.swift */,
+				271EB2E623FAD1FF00F74DF1 /* NotificationToken.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -282,6 +292,7 @@
 		27B9C31622E0F0F9007AF8B6 /* ExpensesDivider */ = {
 			isa = PBXGroup;
 			children = (
+				271EB2E323FAA1BC00F74DF1 /* ExpensesDivider.entitlements */,
 				274D7B5622E5A56600AAB5DD /* Resources */,
 				274D7B5522E5A55B00AAB5DD /* Application */,
 				27931BA122E0F3F800975E5C /* Sources */,
@@ -475,11 +486,13 @@
 				27B9C31822E0F0F9007AF8B6 /* AppDelegate.swift in Sources */,
 				278129B623CE26CA00921696 /* GroupCell.swift in Sources */,
 				275F549C23D56967000B08BE /* BillCell.swift in Sources */,
+				271EB2E723FAD1FF00F74DF1 /* NotificationToken.swift in Sources */,
 				2767883523E5D16300422E97 /* FriendManager.swift in Sources */,
 				278129BA23CE2DBE00921696 /* Group.swift in Sources */,
 				278A1062233377E2002FCABA /* SignUpViewController.swift in Sources */,
 				27255AAA23CB9FC300EFDAE3 /* NewUser.swift in Sources */,
 				270FF3A5238FBBE900ECA7F1 /* FriendListViewController.swift in Sources */,
+				27FC1ABC23F9C13900A8C4AD /* NotificationCenterViewController.swift in Sources */,
 				278129BD23CE309400921696 /* GroupListViewController.swift in Sources */,
 				27E49170233652C5002BA052 /* Constants.swift in Sources */,
 				27EB020323D64470003E249B /* BillsOperations.swift in Sources */,
@@ -488,6 +501,7 @@
 				27397B4D23352B3B0092EA9F /* Utilities.swift in Sources */,
 				27B2FF5D23ED75E90068A691 /* AccessControlList.swift in Sources */,
 				279BD9EF232A4AAF00F1379F /* HomeViewController.swift in Sources */,
+				271EB2E523FAA72D00F74DF1 /* NotificationManager.swift in Sources */,
 				27255AA823CB9D8900EFDAE3 /* Friend.swift in Sources */,
 				274C801C23CADA0F00343ED2 /* SettingsViewController.swift in Sources */,
 				27B2FF6123ED95E40068A691 /* GroupMember.swift in Sources */,
@@ -650,6 +664,7 @@
 			baseConfigurationReference = B133453D89F474322AA69723 /* Pods-ExpensesDivider.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ExpensesDivider/ExpensesDivider.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CXL2NHJDW2;
 				INFOPLIST_FILE = ExpensesDivider/Application/Info.plist;
@@ -669,6 +684,7 @@
 			baseConfigurationReference = 7D309616F3F6D9F31FE45948 /* Pods-ExpensesDivider.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ExpensesDivider/ExpensesDivider.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CXL2NHJDW2;
 				INFOPLIST_FILE = ExpensesDivider/Application/Info.plist;

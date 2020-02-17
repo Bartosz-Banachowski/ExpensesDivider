@@ -33,7 +33,7 @@
 "mtm-gY-p2j.placeholder" = "Hasło";
 
 /* Class = "UILabel"; text = "Log in"; ObjectID = "jFK-9Q-xNn"; */
-"jFK-9Q-xNn.text" = "Zaloguj się";
+"jFK-9Q-xNn.text" = "Zaloguj się do aplikacji dzielącej twoje wydatki";
 
 /* Class = "UILabel"; text = "Sign up"; ObjectID = "jFK-9Q-xNn"; */
-"76E-Pe-KxD.text" = "Zarejestruj się";
+"76E-Pe-KxD.text" = "Stwórz nowe konto";

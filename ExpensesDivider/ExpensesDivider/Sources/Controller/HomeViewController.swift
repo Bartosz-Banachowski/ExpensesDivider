@@ -13,5 +13,7 @@ class HomeViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let notificationManager = NotificationManager()
+        notificationManager.registerForPushNotifications()
     }
 }

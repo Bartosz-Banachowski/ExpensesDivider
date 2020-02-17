@@ -7,10 +7,9 @@
 //
 
 import UIKit
-import MessageUI
 import Firebase
 
-class AddFriendViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class AddFriendViewController: UIViewController {
 
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -75,42 +74,5 @@ class AddFriendViewController: UIViewController, MFMailComposeViewControllerDele
                 self.friendsList.append(contentsOf: friendsList)
             }
         }
-    }
-
-    
-    
-    
-    
-    var noFriendCheckbox: Bool = false
-
-    @IBAction func noFriendCheckboxTapped(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveLinear, animations: {
-            sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-        }, completion: { _ in
-            sender.isSelected = !sender.isSelected
-            self.noFriendCheckbox = sender.isSelected
-            print(self.noFriendCheckbox)
-            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
-                sender.transform = .identity
-            }, completion: nil)
-        })
-    }
-
-    func sendEmail(_ recipient: String) {
-        if MFMailComposeViewController.canSendMail() {
-            let mail = MFMailComposeViewController()
-            mail.mailComposeDelegate = self
-            mail.setToRecipients([recipient])
-            mail.setSubject("Invitation to ExpensesDivider")
-            mail.setMessageBody("<p>Hello! </p> User \(loggedUser?.email ?? "") has sent you an invitation to his friend list in ExpensesDivider",
-                isHTML: true)
-            present(mail, animated: true)
-        } else {
-            NSLog("Device is not set up to send emails")
-        }
-    }
-
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true)
     }
 }
