@@ -1,0 +1,42 @@
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "1Zg-6m-pJJ"; */
+"1Zg-6m-pJJ.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "Create an account"; ObjectID = "76E-Pe-KxD"; */
+"76E-Pe-KxD.text" = "Create an account";
+
+/* Class = "UIButton"; normalTitle = "LOGIN"; ObjectID = "Cr5-fr-0zF"; */
+"Cr5-fr-0zF.normalTitle" = "LOGIN";
+
+/* Class = "UIButton"; normalTitle = "SIGN UP"; ObjectID = "De4-yK-HIk"; */
+"De4-yK-HIk.normalTitle" = "SIGN UP";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "RCV-gD-rs5"; */
+"RCV-gD-rs5.placeholder" = "Email Address";
+
+/* Class = "UILabel"; text = "The password must contain at least 8 characters, including a special character, number and capital letter"; ObjectID = "TBi-xa-AaY"; */
+"TBi-xa-AaY.text" = "The password must contain at least 8 characters, including a special character, number and capital letter";
+
+/* Class = "UILabel"; text = "OR"; ObjectID = "Vh9-gf-qQ8"; */
+"Vh9-gf-qQ8.text" = "OR";
+
+/* Class = "UITextField"; placeholder = "Confirm Password"; ObjectID = "WAB-Z8-wyz"; */
+"WAB-Z8-wyz.placeholder" = "Confirm Password";
+
+/* Class = "UITextField"; placeholder = "Email Address"; ObjectID = "Y2Y-uO-gBo"; */
+"Y2Y-uO-gBo.placeholder" = "Email Address";
+
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "bPZ-Mi-Oba"; */
+"bPZ-Mi-Oba.placeholder" = "Username";
+
+/* Class = "UIButton"; normalTitle = "Forgot Password?"; ObjectID = "bzF-od-xK6"; */
+"bzF-od-xK6.normalTitle" = "Forgot Password?";
+
+/* Class = "UIButton"; normalTitle = "CREATE AN ACCOUNT"; ObjectID = "cON-jk-Cey"; */
+"cON-jk-Cey.normalTitle" = "CREATE AN ACCOUNT";
+
+/* Class = "UILabel"; text = "Log in to your expensive divider App"; ObjectID = "jFK-9Q-xNn"; */
+"jFK-9Q-xNn.text" = "Log in to your expensive divider App";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "mtm-gY-p2j"; */
+"mtm-gY-p2j.placeholder" = "Password";

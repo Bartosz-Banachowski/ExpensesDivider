@@ -13,6 +13,7 @@
 		271EB2E523FAA72D00F74DF1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271EB2E423FAA72D00F74DF1 /* NotificationManager.swift */; };
 		271EB2E723FAD1FF00F74DF1 /* NotificationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271EB2E623FAD1FF00F74DF1 /* NotificationToken.swift */; };
 		271EB2E923FB21DC00F74DF1 /* EditGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271EB2E823FB21DC00F74DF1 /* EditGroupViewController.swift */; };
+		271EB2EC23FC121A00F74DF1 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 271EB2EE23FC121A00F74DF1 /* Home.storyboard */; };
 		27255AA823CB9D8900EFDAE3 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27255AA723CB9D8900EFDAE3 /* Friend.swift */; };
 		27255AAA23CB9FC300EFDAE3 /* NewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27255AA923CB9FC300EFDAE3 /* NewUser.swift */; };
 		27397B4D23352B3B0092EA9F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27397B4C23352B3B0092EA9F /* Utilities.swift */; };
@@ -46,7 +47,6 @@
 		27C6DCEB23CEF24A0060D024 /* AddNewGroupMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C6DCEA23CEF24A0060D024 /* AddNewGroupMemberViewController.swift */; };
 		27C79DB723963B2D00EA6FC4 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C79DB623963B2D00EA6FC4 /* CustomButton.swift */; };
 		27C79DBA23964B2A00EA6FC4 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C79DB923964B2A00EA6FC4 /* AddFriendViewController.swift */; };
-		27E4916E23364CB1002BA052 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E4916D23364CB1002BA052 /* Home.storyboard */; };
 		27E49170233652C5002BA052 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E4916F233652C5002BA052 /* Constants.swift */; };
 		27EB020323D64470003E249B /* BillsOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EB020223D64470003E249B /* BillsOperations.swift */; };
 		27EB020523D6D34B003E249B /* DetailedBillInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EB020423D6D34B003E249B /* DetailedBillInfoViewController.swift */; };
@@ -64,6 +64,8 @@
 		271EB2E423FAA72D00F74DF1 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		271EB2E623FAD1FF00F74DF1 /* NotificationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationToken.swift; sourceTree = "<group>"; };
 		271EB2E823FB21DC00F74DF1 /* EditGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupViewController.swift; sourceTree = "<group>"; };
+		271EB2ED23FC121A00F74DF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
+		271EB2F023FC122300F74DF1 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Home.strings; sourceTree = "<group>"; };
 		27255AA723CB9D8900EFDAE3 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		27255AA923CB9FC300EFDAE3 /* NewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUser.swift; sourceTree = "<group>"; };
 		27397B492334EE9B0092EA9F /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Login.strings; sourceTree = "<group>"; };
@@ -102,7 +104,6 @@
 		27C6DCEA23CEF24A0060D024 /* AddNewGroupMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewGroupMemberViewController.swift; sourceTree = "<group>"; };
 		27C79DB623963B2D00EA6FC4 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		27C79DB923964B2A00EA6FC4 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
-		27E4916D23364CB1002BA052 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		27E4916F233652C5002BA052 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		27EB020223D64470003E249B /* BillsOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillsOperations.swift; sourceTree = "<group>"; };
 		27EB020423D6D34B003E249B /* DetailedBillInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedBillInfoViewController.swift; sourceTree = "<group>"; };
@@ -162,7 +163,7 @@
 			children = (
 				27B9C31B22E0F0F9007AF8B6 /* Login.storyboard */,
 				27B9C32022E0F0FC007AF8B6 /* LaunchScreen.storyboard */,
-				27E4916D23364CB1002BA052 /* Home.storyboard */,
+				271EB2EE23FC121A00F74DF1 /* Home.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -397,7 +398,7 @@
 				2747C3282333CCC600432D39 /* Localizable.strings in Resources */,
 				27B9C32222E0F0FC007AF8B6 /* LaunchScreen.storyboard in Resources */,
 				27C1C3402328E9DB0009DA37 /* GoogleService-Info.plist in Resources */,
-				27E4916E23364CB1002BA052 /* Home.storyboard in Resources */,
+				271EB2EC23FC121A00F74DF1 /* Home.storyboard in Resources */,
 				273FA2072314197B00AE1F3B /* Assets.xcassets in Resources */,
 				27B9C31D22E0F0F9007AF8B6 /* Login.storyboard in Resources */,
 			);
@@ -515,6 +516,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		271EB2EE23FC121A00F74DF1 /* Home.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				271EB2ED23FC121A00F74DF1 /* Base */,
+				271EB2F023FC122300F74DF1 /* pl */,
+			);
+			name = Home.storyboard;
+			sourceTree = "<group>";
+		};
 		2747C32A2333CCC600432D39 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

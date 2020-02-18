@@ -1,0 +1,135 @@
+
+/* Class = "UIButton"; normalTitle = "Settle up"; ObjectID = "0hc-3z-cn1"; */
+"0hc-3z-cn1.normalTitle" = "Spłać dług";
+
+/* Class = "UILabel"; text = "Email address"; ObjectID = "25P-2X-NXp"; */
+"25P-2X-NXp.text" = "adres email";
+
+/* Class = "UIViewController"; title = "FriendListViewController"; ObjectID = "7eJ-A3-mb1"; */
+"7eJ-A3-mb1.title" = "FriendListViewController";
+
+/* Class = "UILabel"; text = "To be fully settle up from your debt you need to have 0.00 zl alongside your username"; ObjectID = "8gb-8d-v65"; */
+"8gb-8d-v65.text" = "Aby w pełni spłacić swój dług, musisz mieć 0,00 zł obok swojej nazwy użytkownika";
+
+/* Class = "UILabel"; text = "With who:"; ObjectID = "AZt-h7-etP"; */
+"AZt-h7-etP.text" = "Z kim:";
+
+/* Class = "UITextField"; placeholder = "PLN"; ObjectID = "Axa-Sa-bHr"; */
+"Axa-Sa-bHr.placeholder" = "PLN";
+
+/* Class = "UILabel"; text = "Bartosz"; ObjectID = "B5F-t0-ivd"; */
+"B5F-t0-ivd.text" = "Bartosz";
+
+/* Class = "UIButton"; normalTitle = "Update"; ObjectID = "Dul-l1-s0G"; */
+"Dul-l1-s0G.normalTitle" = "Zaktualizuj";
+
+/* Class = "UILabel"; text = "Access level:"; ObjectID = "Evn-1j-QVU"; */
+"Evn-1j-QVU.text" = "Poziom dostepu:";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "FsW-Cd-4Rt"; */
+"FsW-Cd-4Rt.placeholder" = "nazwa uzytkownika";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "GWu-so-ErP"; */
+"GWu-so-ErP.text" = "Tytuł";
+
+/* Class = "UILabel"; text = "Bartosz"; ObjectID = "H1w-oh-mFj"; */
+"H1w-oh-mFj.text" = "Bartosz";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "HJK-qk-PX5"; */
+"HJK-qk-PX5.text" = "Tytuł";
+
+/* Class = "UIButton"; normalTitle = "LOGOUT"; ObjectID = "HRg-uf-vkv"; */
+"HRg-uf-vkv.normalTitle" = "WYLOGUJ";
+
+/* Class = "UITextField"; placeholder = "PLN"; ObjectID = "HUS-1d-vqX"; */
+"HUS-1d-vqX.placeholder" = "PLN";
+
+/* Class = "UILabel"; text = "If user has an account, we will inform him about pending invitation"; ObjectID = "HoQ-sc-7Nu"; */
+"HoQ-sc-7Nu.text" = "Jeśli użytkownik ma konto, poinformujemy go o oczekującym zaproszeniu";
+
+/* Class = "UILabel"; text = "Add new group to your App"; ObjectID = "HzI-9g-WEh"; */
+"HzI-9g-WEh.text" = "Dodaj nową grupę do swojej aplikacji";
+
+/* Class = "UILabel"; text = "Your current debt:"; ObjectID = "IeC-dm-QL3"; */
+"IeC-dm-QL3.text" = "Twój obecny dług:";
+
+/* Class = "UITextField"; placeholder = "Bill's Date"; ObjectID = "KMe-H3-cFL"; */
+"KMe-H3-cFL.placeholder" = "Data rachunku";
+
+/* Class = "UITextField"; text = "choose person to settle up"; ObjectID = "Ke5-jI-4vI"; */
+"Ke5-jI-4vI.text" = "choose person to settle up";
+
+/* Class = "UIButton"; normalTitle = "Settle up"; ObjectID = "LbC-Sv-8sW"; */
+"LbC-Sv-8sW.normalTitle" = "Spłać dług";
+
+/* Class = "UILabel"; text = "Edit your group"; ObjectID = "Mgp-Xd-MMt"; */
+"Mgp-Xd-MMt.text" = "Edytuj swoją grupe";
+
+/* Class = "UILabel"; text = "Settle your bill\n"; ObjectID = "Ng0-Iu-TXG"; */
+"Ng0-Iu-TXG.text" = "Zapłać swój rachunek\n";
+
+/* Class = "UILabel"; text = "0,00 zł"; ObjectID = "OSz-hX-hrT"; */
+"OSz-hX-hrT.text" = "0,00 zł";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "Pwu-Yr-UeC"; */
+"Pwu-Yr-UeC.text" = "Imię";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "Saf-3p-XSK"; */
+"Saf-3p-XSK.normalTitle" = "Zapisz";
+
+/* Class = "UIButton"; normalTitle = "Add people to group"; ObjectID = "aCR-uZ-SEy"; */
+"aCR-uZ-SEy.normalTitle" = "Dodaj ludzi do grupy";
+
+/* Class = "UILabel"; text = "Check to nofity via email"; ObjectID = "ctv-Cb-XOn"; */
+"ctv-Cb-XOn.text" = "Zaznacz aby powiadomić za pośrednictwem email";
+
+/* Class = "UITextField"; text = "who paid"; ObjectID = "d8H-7k-kEt"; */
+"d8H-7k-kEt.text" = "kto zapłacił";
+
+/* Class = "UILabel"; text = "Add new bill to your group"; ObjectID = "dQa-Qx-VHh"; */
+"dQa-Qx-VHh.text" = "Dodaj nowy rachunek do swojej grupy";
+
+/* Class = "UILabel"; text = "If you do not check any checkbox, notifications won't be sent"; ObjectID = "egI-d5-MaE"; */
+"egI-d5-MaE.text" = "Jeśli nie zaznaczysz żadnego pola wyboru, powiadomienia nie będą wysyłane";
+
+/* Class = "UILabel"; text = "You can add only accepted friend to your group"; ObjectID = "fVn-Yr-RJf"; */
+"fVn-Yr-RJf.text" = "Możesz dodać tylko zaakceptowanego przyjaciela do swojej grupy";
+
+/* Class = "UITextField"; text = "split type"; ObjectID = "fZl-wd-q3O"; */
+"fZl-wd-q3O.text" = "Typ podziału";
+
+/* Class = "UIBarButtonItem"; title = "Send"; ObjectID = "gHr-VJ-rlm"; */
+"gHr-VJ-rlm.title" = "Wyślij";
+
+/* Class = "UILabel"; text = "Notifications manager"; ObjectID = "gsa-6v-2UJ"; */
+"gsa-6v-2UJ.text" = "Manager notifikacji";
+
+/* Class = "UIButton"; normalTitle = "Notify debtor"; ObjectID = "iXC-Wg-zn8"; */
+"iXC-Wg-zn8.normalTitle" = "Powiadom dłużnika";
+
+/* Class = "UILabel"; text = "Your balance:"; ObjectID = "iyE-g1-MSk"; */
+"iyE-g1-MSk.text" = "Twój balans:";
+
+/* Class = "UIButton"; normalTitle = "Add people to group"; ObjectID = "p9Q-50-gDT"; */
+"p9Q-50-gDT.normalTitle" = "Dodaj osoby do grupy";
+
+/* Class = "UILabel"; text = "Inv. status:"; ObjectID = "qw6-CO-jhu"; */
+"qw6-CO-jhu.text" = "Status:";
+
+/* Class = "UILabel"; text = "Add friend to your app friend list "; ObjectID = "sPf-IQ-CKJ"; */
+"sPf-IQ-CKJ.text" = "Dodaj znajomego do listy znajomych w aplikacji ";
+
+/* Class = "UILabel"; text = "Check to nofity via push notifications"; ObjectID = "uj5-1v-c54"; */
+"uj5-1v-c54.text" = "Zaznacz aby powiadomić za pośrednictwem powiadomień push";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "wZE-Bm-ju7"; */
+"wZE-Bm-ju7.text" = "Imię";
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "xQm-ku-3AS"; */
+"xQm-ku-3AS.text" = "Nazwa użytkownika";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "ymP-Mb-RHT"; */
+"ymP-Mb-RHT.text" = "Sczegóły";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "yp0-Nf-SgZ"; */
+"yp0-Nf-SgZ.normalTitle" = "Zapisz";
