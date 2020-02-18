@@ -16,5 +16,6 @@ struct Constants {
         static let loginVC = "LoginVC"
         static let loginStoryboard = "Login"
         static let AddNewGroupMemberVC = "AddNewGroupMemberVC"
+        static let editGroupVC = "EditGroupViewControllerVC"
     }
 }

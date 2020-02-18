@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct DbConstants {
 //database collection reference
@@ -30,8 +31,10 @@ struct DbConstants {
     static let member = "member"
 
 //push notification
-    static let title = "wants you to notify about our debt"
-    static let body = "Group information: "
+    static let pnTitle = NSLocalizedString("pnTitle", comment: "")
+    static let pnBody = NSLocalizedString("pnBody", comment: "")
+    static let emailTitle = NSLocalizedString("emailTitle", comment: "")
+    static let emailBody = NSLocalizedString("emailBody", comment: "")
     static let urlString = "https://fcm.googleapis.com/fcm/send"
     static let authAppKey = "key=AAAA9aQ4lrM:APA91bGAk87-f7azyE4m99uk_q8GafFM0jjDXbwPWDADXLJsM9m3IEzG8dzN7Z9KdXlBscFsUoxs5ON2VySHaY1TFvKFyUt6ecL2RS6HNFyYKIQvIlCOzUQcx628OyC5aq_rh6aSTI1t"
 }

@@ -21,12 +21,24 @@
 "sameEmailsOfFriends" = "There cannot be two friends with the same email";
 "TooMuchDotsInMoneyFieldError" = "There cannot be more than 1 dot in money field";
 "MoneyFieldError" = "Please enter the correct bill size";
-
-//dialogs strings
-"InvitationTitle" = "Pending invitations";
-"InvitationBody" = "Would you like to add new friend to your list - ";
 "ErrorTitle" = "Error";
 "ErrorBody" = "There was a problem during executing the operation";
 "AccessErrorTitle" = "Access Error";
 "AccessErrorBody" = "Only admin of the group have posibility to delete";
+"noSelectedUsersErrorTittle" = "Select a notification method";
+"noSelectedUsersErrorBody" = "You need to select at least one of the notification user method";
+"noCheckboxErrorTittle" = "Select debtors";
+"noCheckboxErrorBody" = "You must select the debtors you want to notify about the debt";
 
+
+//dialogs strings
+"InvitationTitle" = "Pending invitations";
+"InvitationBody" = "Would you like to add new friend to your list - ";
+
+//notifications strings
+"pnTitle" = "wants you to notify about your debt in group in -";
+"pnBody" = "Group information: ";
+"emailTitle" = "ExpensesDivider - Notification about debt";
+"emailBody" = "wants you to notify about your debt in group in -";
+"NotificationSuccessTitle" = "Success";
+"NotificationSuccessBody" = "You have successfully notified the debtor(s)";

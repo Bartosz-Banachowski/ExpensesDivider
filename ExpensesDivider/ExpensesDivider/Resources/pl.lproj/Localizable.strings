@@ -21,11 +21,26 @@
 "sameEmailsOfFriends" = "Nie można utworzyć dwóch znajomych z takim samym adresem e-mail";
 "TooMuchDotsInMoneyFieldError" = "Pole zawierające wielkość rachunku nie może zawierać więcej niż jednej kropki";
 "MoneyFieldError" = "Proszę o poprawne wprowadzenie rozmiaru rachunku";
-
-//dialog strings
-"InvitationTitle" = "Oczekujące zaproszenia";
-"InvitationBody" = "Czy chciałbyś dodać nowego znajomego do listy znajomych - ";
 "ErrorTitle" = "Błąd";
 "ErrorBody" = "Wystąpił problem podczas wykonywania operacji";
 "AccessErrorTitle" = "Błąd dostępu";
 "AccessErrorBody" = "Tylko admin grupy ma możliwość usuwania";
+"noCheckboxErrorTittle" = "Zaznacz metode notifikacji";
+"noCheckboxErrorBody" = "Musisz zaznaczyc co najmniej jedną metodę notyfikacji użytkownika";
+"noSelectedUsersErrorTittle" = "Wybierz dłużników";
+"noSelectedUsersErrorBody" = "Musisz wybrać dłużników, których chcesz powiadomić o długu";
+
+
+//dialog strings
+"InvitationTitle" = "Oczekujące zaproszenia";
+"InvitationBody" = "Czy chciałbyś dodać nowego znajomego do listy znajomych - ";
+
+//notifications strings
+"pnTitle" = "chciałby powiadomić cię o twoim długu w -";
+"pnBody" = "Informacje o grupie: ";
+"emailTitle" = "ExpensesDivider - Powiadomienie o twoim dlugu";
+"emailBody" = "chciałby powiadomić cię o twoim długu w -";
+"NotificationSuccessTitle" = "Sukces";
+"NotificationSuccessBody" = "Pomyślnie powiadomiłeś dłużnika(ów)";
+"EmailSuccessTitle" = "Sukces";
+"EmailSuccessBody" = "Pomyślnie powiadomiłeś dłużnika(ów)";

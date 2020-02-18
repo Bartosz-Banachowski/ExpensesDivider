@@ -95,12 +95,28 @@ class GroupListViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+//
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            if groupList[indexPath.row].accessControlList[userManager.loggedUserID] == AccessLevel.admin {
+//                deleteGroupFromDB(whichGroup: indexPath.row)
+//                groupList.remove(at: indexPath.row)
+//                tableView.beginUpdates()
+//                tableView.deleteRows(at: [indexPath], with: .automatic)
+//                tableView.endUpdates()
+//            } else {
+//                let accessErrorAlert = AlertService.getErrorPopup(title: NSLocalizedString("AccessErrorTitle", comment: "AccessError"),
+//                                                                  body: NSLocalizedString("AccessErrorBody", comment: "AccessError"))
+//                self.present(accessErrorAlert, animated: true, completion: nil)
+//            }
+//        }
+//    }
 
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            if groupList[indexPath.row].accessControlList[userManager.loggedUserID] == AccessLevel.admin {
-                deleteGroupFromDB(whichGroup: indexPath.row)
-                groupList.remove(at: indexPath.row)
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteButton = UITableViewRowAction(style: .destructive, title: "Delete") { (_, indexPath) in
+            if self.groupList[indexPath.row].accessControlList[self.userManager.loggedUserID] == AccessLevel.admin {
+                self.deleteGroupFromDB(whichGroup: indexPath.row)
+                self.groupList.remove(at: indexPath.row)
                 tableView.beginUpdates()
                 tableView.deleteRows(at: [indexPath], with: .automatic)
                 tableView.endUpdates()
@@ -110,5 +126,22 @@ class GroupListViewController: UIViewController, UITableViewDelegate, UITableVie
                 self.present(accessErrorAlert, animated: true, completion: nil)
             }
         }
+
+        let editButton = UITableViewRowAction(style: .normal, title: "Edit") { (_, indexPath) in
+            if self.groupList[indexPath.row].accessControlList[self.userManager.loggedUserID] == AccessLevel.admin {
+                let editGroupVC = UIStoryboard(name: Constants.Storyboard.homeStoryboard, bundle: nil)
+                           .instantiateViewController(withIdentifier: Constants.Storyboard.editGroupVC) as? EditGroupViewController
+                editGroupVC?.groupInfo = self.groupList[indexPath.row]
+                self.present(UINavigationController(rootViewController: editGroupVC!), animated: true, completion: nil)
+            } else {
+                let accessErrorAlert = AlertService.getErrorPopup(title: NSLocalizedString("AccessErrorTitle", comment: "AccessError"),
+                                                                  body: NSLocalizedString("AccessErrorBody", comment: "AccessError"))
+                self.present(accessErrorAlert, animated: true, completion: nil)
+            }
+        }
+
+        deleteButton.backgroundColor = .systemRed
+        editButton.backgroundColor = .systemOrange
+        return [deleteButton, editButton]
     }
 }

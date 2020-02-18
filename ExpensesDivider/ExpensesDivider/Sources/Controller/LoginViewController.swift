@@ -63,7 +63,6 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func forgotPassword(_ sender: UIButton) {
-        //TODO
     }
 
     func goToHome() {

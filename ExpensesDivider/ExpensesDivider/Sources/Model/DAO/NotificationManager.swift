@@ -74,7 +74,7 @@ class NotificationManager: NSObject, MessagingDelegate, UNUserNotificationCenter
     }
 
     func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
-        print("dasdadasda ", remoteMessage.appData)
+        print(remoteMessage.appData)
     }
 
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
@@ -82,6 +82,6 @@ class NotificationManager: NSObject, MessagingDelegate, UNUserNotificationCenter
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        print(" co to jaesrt ", response)
+        print(response)
     }
 }

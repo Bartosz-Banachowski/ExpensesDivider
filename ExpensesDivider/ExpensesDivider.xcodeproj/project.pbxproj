@@ -12,6 +12,7 @@
 		270FF3A5238FBBE900ECA7F1 /* FriendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270FF3A4238FBBE900ECA7F1 /* FriendListViewController.swift */; };
 		271EB2E523FAA72D00F74DF1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271EB2E423FAA72D00F74DF1 /* NotificationManager.swift */; };
 		271EB2E723FAD1FF00F74DF1 /* NotificationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271EB2E623FAD1FF00F74DF1 /* NotificationToken.swift */; };
+		271EB2E923FB21DC00F74DF1 /* EditGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271EB2E823FB21DC00F74DF1 /* EditGroupViewController.swift */; };
 		27255AA823CB9D8900EFDAE3 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27255AA723CB9D8900EFDAE3 /* Friend.swift */; };
 		27255AAA23CB9FC300EFDAE3 /* NewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27255AA923CB9FC300EFDAE3 /* NewUser.swift */; };
 		27397B4D23352B3B0092EA9F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27397B4C23352B3B0092EA9F /* Utilities.swift */; };
@@ -62,6 +63,7 @@
 		271EB2E323FAA1BC00F74DF1 /* ExpensesDivider.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExpensesDivider.entitlements; sourceTree = "<group>"; };
 		271EB2E423FAA72D00F74DF1 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		271EB2E623FAD1FF00F74DF1 /* NotificationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationToken.swift; sourceTree = "<group>"; };
+		271EB2E823FB21DC00F74DF1 /* EditGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupViewController.swift; sourceTree = "<group>"; };
 		27255AA723CB9D8900EFDAE3 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		27255AA923CB9FC300EFDAE3 /* NewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUser.swift; sourceTree = "<group>"; };
 		27397B492334EE9B0092EA9F /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Login.strings; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				27FC018E23D24F57007C8316 /* AddGroupViewController.swift */,
+				271EB2E823FB21DC00F74DF1 /* EditGroupViewController.swift */,
 				27C6DCEA23CEF24A0060D024 /* AddNewGroupMemberViewController.swift */,
 				278129BC23CE309400921696 /* GroupListViewController.swift */,
 				27FC018C23D24251007C8316 /* GroupViewController.swift */,
@@ -468,6 +471,7 @@
 			files = (
 				27B9C31A22E0F0F9007AF8B6 /* LoginViewController.swift in Sources */,
 				27FC018F23D24F57007C8316 /* AddGroupViewController.swift in Sources */,
+				271EB2E923FB21DC00F74DF1 /* EditGroupViewController.swift in Sources */,
 				27C4C90223E5D3EA005C05F4 /* DbConstants.swift in Sources */,
 				27397B4F233536370092EA9F /* Extensions.swift in Sources */,
 				27A4D7C923EABB4900BDC2C6 /* AlertService.swift in Sources */,

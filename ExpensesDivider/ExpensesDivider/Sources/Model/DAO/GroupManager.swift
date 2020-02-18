@@ -22,7 +22,7 @@ class GroupManager: NSObject {
             let document = try groupsRef.addDocument(from: newGroup)
             groupsRef.document(document.documentID).updateData(["UUID": document.documentID])
         } catch let error {
-            NSLog("Error adding new group to the databse: \(error)")
+            NSLog("Error adding new group to the database: \(error)")
             completion(error)
         }
         NSLog("Succesfuly added new group to group list")
@@ -83,6 +83,17 @@ class GroupManager: NSObject {
             }
         }
         NSLog("Succesfuly delete group from the list - \(groupID)")
+        completion(nil)
+    }
+
+    func editGroup(group: Group, completion: @escaping(Error?) -> Void) {
+        do {
+            try groupsRef.document(group.UUID!).setData(from: group)
+        } catch let error {
+            NSLog("Error editing new group to the database: \(error)")
+            completion(error)
+        }
+        NSLog("Succesfuly edited new group to group list")
         completion(nil)
     }
 }

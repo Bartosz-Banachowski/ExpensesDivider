@@ -32,24 +32,41 @@ class NotificationCenterViewController: UIViewController, MFMailComposeViewContr
     }
 
     @objc func sendNotificationsTapped() {
-        //validation, description to bill, generate new translations, prosta edycja czegokolwiek
-        if notifyCheckbox == true {
-            for debtor in selectedUserList {
-                notificationManager.getDeviceTokensForDebtor(debtor: debtor.email) { (tokens, error) in
-                    if error != nil {
-                        let errorAlert = AlertService.getErrorPopup(title: NSLocalizedString("ErrorTitle", comment: "error"),
-                                                                    body: NSLocalizedString("ErrorBody", comment: "Error"))
-                        self.present(errorAlert, animated: true, completion: nil)
-                    } else {
-                        for token in tokens {
-                            self.sendPushNotification(to: token.deviceToken)
+        let successNotificationAlert = AlertService.getErrorPopup(title: NSLocalizedString("NotificationSuccessTitle", comment: "Notification success"),
+                                                                  body: NSLocalizedString("NotificationSuccessBody", comment: "Notification success"))
+        performTask { (errorAlert) in
+            if errorAlert != nil {
+                self.present(errorAlert!, animated: true, completion: nil)
+            } else {
+                self.present(successNotificationAlert, animated: true, completion: nil)
+            }
+        }
+    }
+
+    func performTask(completion: @escaping(UIAlertController?) -> Void) {
+        let errorAlert = AlertService.getErrorPopup(title: NSLocalizedString("ErrorTitle", comment: "error"),
+                                                    body: NSLocalizedString("ErrorBody", comment: "Error"))
+        if validateField() == true {
+            if notifyCheckbox == true {
+                for debtor in selectedUserList {
+                    notificationManager.getDeviceTokensForDebtor(debtor: debtor.email) { (tokens, error) in
+                        if error != nil {
+                            completion(errorAlert)
+                            return
+                        } else {
+                            for token in tokens {
+                                self.sendPushNotification(to: token.deviceToken)
+                            }
                         }
                     }
                 }
             }
-        }
-        if emailCheckbox == true {
-            sendEmail()
+            if emailCheckbox == true {
+                if sendEmail() == false {
+                    completion(errorAlert)
+                }
+            }
+            completion(nil)
         }
     }
 
@@ -80,8 +97,8 @@ class NotificationCenterViewController: UIViewController, MFMailComposeViewContr
     func sendPushNotification(to token: String) {
         let url = NSURL(string: DbConstants.urlString)!
         let paramString: [String: Any] = ["to": token,
-                                          "notification": ["title": userManager.loggedUserUsername + DbConstants.title,
-                                                           "body": DbConstants.body + "\(groupInfo.groupName)/\(billInfo.description)"],
+                                          "notification": ["title": userManager.loggedUserUsername + DbConstants.pnTitle,
+                                                           "body": DbConstants.pnBody + "\(groupInfo.groupName)/\(billInfo.description)"],
                                           "data": ["user": userManager.loggedUserUsername]]
 
         let request = NSMutableURLRequest(url: url as URL)
@@ -107,7 +124,7 @@ class NotificationCenterViewController: UIViewController, MFMailComposeViewContr
         dataTask.resume()
     }
 
-    func sendEmail() {
+    func sendEmail() -> Bool {
         var emails: [String] = []
         for debtor in selectedUserList {
             emails.append(debtor.email)
@@ -116,17 +133,36 @@ class NotificationCenterViewController: UIViewController, MFMailComposeViewContr
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients(emails)
-            mail.setSubject("ExpensesDivider - Notification about debt")
-            mail.setMessageBody("<p>Hello! </p> User \(userManager.loggedUserEmail) wants you to notify about your debt in group - \(groupInfo.groupName)/\(billInfo.description) " ,
+            mail.setSubject(DbConstants.emailTitle)
+            mail.setMessageBody("<p>Hi! </p> User \(userManager.loggedUserEmail) \(DbConstants.emailBody) \(groupInfo.groupName)/\(billInfo.description) ",
                 isHTML: true)
             present(mail, animated: true)
         } else {
             NSLog("Device is not set up to send emails")
+            return false
         }
+        return true
     }
 
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
+    }
+
+    func validateField() -> Bool {
+        //check all field are full in
+        if notifyCheckbox == false && emailCheckbox == false {
+            let errorAlert = AlertService.getErrorPopup(title: NSLocalizedString("noCheckboxErrorTittle", comment: "noCheckbox error"),
+                                                        body: NSLocalizedString("noCheckboxErrorBody", comment: "noCheckbox Error"))
+            self.present(errorAlert, animated: true, completion: nil)
+            return false
+        }
+
+        if selectedUserList.isEmpty {
+            let errorAlert = AlertService.getErrorPopup(title: NSLocalizedString("noSelectedUsersErrorTittle", comment: "noSelectedUsers error"),
+                                                        body: NSLocalizedString("noSelectedUsersErrorBody", comment: "noSelectedUsers Error"))
+            self.present(errorAlert, animated: true, completion: nil)
+        }
+        return true
     }
 
     // MARK: - Table view data source
