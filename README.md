@@ -1,4 +1,4 @@
-# Engineers_Thesis
+# ExpensesDivider
 
 The project contains the source code of the mobile aplication for dividing group expenses.
 Applicaiton is divided on 3 screens
